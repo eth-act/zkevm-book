@@ -7,7 +7,7 @@ title = "Ethereum zkEVM book"
 
 [output.html]
 default-theme = "light"
-preferred-dark-theme = "coal"
+preferred-dark-theme = "ayu"
 smart-punctuation = true
 mathjax-support = true
 no-section-label = true
