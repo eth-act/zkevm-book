@@ -1,0 +1,19 @@
+[book]
+authors = ["Ethereum"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Ethereum zkEVM book"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "coal"
+smart-punctuation = true
+mathjax-support = true
+no-section-label = true
+git-repository-url = "https://github.com/eth-act/zkevm-book"
+edit-url-template = "https://github.com/eth-act/zkevm-book/edit/main/{path}"
+
+[output.html.fold]
+enable = true
+level = 0
