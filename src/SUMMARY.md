@@ -7,6 +7,7 @@
   - [Architecture](./trees/external/architecture.md)
   - [Incentives](./trees/external/incentives.md)
   - [Preconditions for Integrating zkEVMs](./trees/external/preconditions.md)
+  - [Clients](./trees/external/client.md)
   - [Open Problems](./trees/external/open.md)
 - [Part II: zkVM Internals](./trees/internal/internals.md)
   - [Cryptographic Prerequisites](./trees/internal/cryptobasics.md)
