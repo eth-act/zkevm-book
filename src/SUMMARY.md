@@ -10,7 +10,7 @@
   - [Open Problems](./trees/external/open.md)
 - [Part II: zkVM Internals](./trees/internal/internals.md)
   - [Cryptographic Prerequisites](./trees/internal/cryptobasics.md)
-  - [ISA](./trees/internal/isa.md)
+  - [Instruction Set Architecture](./trees/internal/isa.md)
   - [Arithmetization](./trees/internal/arithmetization.md)
   - [Information Theoretic Layer: IOPs and Poly-IOPs](./trees/internal/polyiops.md)
   - [Cryptographic Layer: Polynomial Commitments](./trees/internal/polycoms.md)
