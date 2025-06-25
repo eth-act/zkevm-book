@@ -1,4 +1,4 @@
-# zkVM ISAs and Arithmetization
+# zkVM ISAs
 
 - RISC-V
 - ZK designed ISA (Cairo)
