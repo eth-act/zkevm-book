@@ -1,4 +1,4 @@
-# zkVM ISAs
+# Instruction Set Architecture
 
 - RISC-V
 - ZK designed ISA (Cairo)
