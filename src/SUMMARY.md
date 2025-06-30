@@ -21,3 +21,4 @@
   - [Benchmarking](./trees/practical_guides/benchmarking.md)
   - [Clients](./trees/practical_guides/client.md)
   - [Process](./trees/practical_guides/process.md)
+- [Part IV: Current Status](./trees/status/status.md)
