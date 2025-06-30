@@ -1,16 +1,17 @@
 # Introduction
-
 Ethereum’s vision is to be a *secure* and *scalable* decentralized backbone of the modern economy.
 One major step toward achieving this vision is the integration of zkEVMs into the Ethereum protocol.
 
 In this book, we explore this idea in depth - what zkEVMs are, how they can be applied to Ethereum, and how theoretical advances in cryptography, combined with significant engineering effort, make zkEVMs a reality.
 
-## Re-Execution and Gas
-
-
-Ethereum operates in discrete time intervals known as slots.
-Roughly speaking, in each slot, the network aims to reach consensus on a new block of transactions.
+## Slots, Re-Execution and Gas
+One of Ethereum's core functionalities is maintaining *consensus* on a shared state in a decentralized way.
+To achieve this, Ethereum operates in discrete time intervals called *slots*, during which the blockchain’s state can be updated at most once.
+In each slot, participants in the Ethereum protocol work to agree on a state transition, which is represented by a *block*.
+Each block contains, among other things, a list of *transactions*.
 Here, a transaction isn't just a monetary transfer - it can be any programmatic action, such as calling a smart contract function that executes code and potentially alters the shared blockchain state.
+Intuitively, the more transactions included in a single block, the lower the amortized overhead imposed by the consensus algorithm per transaction.
+
 A simplified version of what happens in a slot is as follows:
 1. A *proposer* is selected and distributes a signed block of transactions over the gossip network.
 2. Other participants, called *validators*, independently *re-execute* the transactions in the block to verify its correctness. If the block is valid, they generate and distribute attestations.
@@ -31,8 +32,10 @@ It also effectively limits Ethereum’s throughput: only a certain amount of com
 ## Scaling Naively
 One might think that increasing the block gas limit would immediately solve Ethereum’s scalability issues: more gas per block means more transactions, which means higher throughput.
 However, recall that all validators must re-execute the block to verify its correctness within the fixed duration of a slot.
-Raising the gas limit increases the computational load on validators.
-At some point, this becomes unsustainable, especially if we want to keep validator hardware requirements modest to maintain decentralization.
+Raising the gas limit naively increases the computational load on validators.
+One way to address this is by requiring validators to have more powerful hardware.
+However, this approach has limits: if hardware demands become too high, it raises the barrier to entry for validators, undermining decentralization.
+
 Thus, a fundamental bottleneck in Ethereum’s scalability is that *every validator must re-execute every transaction*.
 
 ## zkEVMs to the Rescue
