@@ -44,8 +44,7 @@ They rely on a cryptographic tool known as a *succinct non-interactive argument 
 The key idea is simple: instead of requiring all validators to re-execute every transaction, we allow a single party, typically the proposer or a specialized prover, to execute the block and generate a *short cryptographic proof* that shows the correctness of this execution.
 This proof is then included with the block.
 Importantly, verifying this proof is much cheaper than re-executing the entire block.
-Validators can now confirm correctness by checking the proof, enabling a massive reduction computation.
-As a result, Ethereum can safely increase the gas limit (and thus throughput) without increasing the computational burden on validators.
+By verifying the proof instead of re-executing every transaction, validators dramatically reduce their computational and hardware demands. This allows Ethereum to safely raise the gas limit — and thus increase throughput — without compromising decentralization or validator accessibility.
 
 
 ## Structure of this Book
