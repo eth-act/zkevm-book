@@ -51,5 +51,5 @@ By verifying the proof instead of re-executing every transaction, validators dra
 This book is structured into four parts, two of which form the conceptual core:
 - Part I explains how a zkEVM can be used Ethereum. It explains what kind of problems it solves and how. In particular, here we treat the zkEVM as a magical black box with a specific interface and desired efficiency and security properties.
 - Part II explains the cryptographic principles underlying the construction of most zkEVMs. While different constructions of zkEVMs differ in details, most of them follow a common framework, which we outline in this part.
-The following Part III contains sections that are tailored to specific audiences, e.g., Ethereum client developers, or readers interested in benchmarking.
-Part IV tracks the current status of the zkEVM effort and is meant to be updated regularly.
+- Part III contains sections that are tailored to specific audiences, e.g., Ethereum client developers, or readers interested in benchmarking.
+- Part IV tracks the current status of the zkEVM effort and is meant to be updated regularly.
