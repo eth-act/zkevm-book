@@ -3,13 +3,13 @@
 Robust incentive structures are necessary to ensure zkEVMs can be implemented on Ethereum. In this section, we highlight the three main incentive problems that need to be addressed.
 
 ## Fallback Provers
-At all times, there has to be at least one prover willing and able to prove blocks. That is, proving requires a 1-out-of-N trust assumption. This project is a bottleneck for zkEVM adoption and therefore high priority. The goal of the “Fallback Provers” project is to ensure this 1-out-of-N trust assumption is credible.  Credibility is obtained by:
+At all times, there has to be at least one prover willing and able to prove blocks. That is, proving requires a 1-out-of-N trust assumption. The goal of the “Fallback Provers” project is to ensure this 1-out-of-N trust assumption is credible.  Credibility is obtained by:
 
 1. Ensuring the required costs of proving are low enough such that many people could run a prover.
 2. Ensuring provers can be spun up quickly, whether locally, in a distributed setting, or with rented GPUs. 
 3. Ensuring new provers can be found by block builders.
 
-This project is concerned with the third point and aims to build a robust in-protocol system to facilitate new provers and builders to communicate with each other, sometimes called multiplexing.
+This project is concerned with the third point and aims to build a robust in-protocol system to facilitate new provers and builders to communicate with each other, sometimes called multiplexing. The Fallback Provers project is a bottleneck for zkEVM adoption and therefore high priority.
 
 ## Prover Killers
 Prover killers are blocks that are excessively hard to prove due to the large number and/or types of transactions in the block. If blocks cannot be proven, but proofs are required to validate blocks, Ethereum cannot process transactions: it loses liveness. This project is also a bottleneck for zkEVM adoption, however, the solution space is better understood than that of the fallback provers project.
