@@ -16,7 +16,7 @@ As block complexity and gas limits increase, only entities with high-end machine
 
 ### How zkEVMs help
 
-By offloading heavy computation to provers, zkEVMs reduce validator requirements to lightweight proof checking. Even a modest device—some researchers suggest a **Raspberry Pi Pico 2** (\~\$10)—could verify proofs. By drastically lowering the hardware cost barrier, zkEVMs preserve a broad validator set alongside existing requirements (e.g., 32 ETH stake), ensuring that no single group dominates consensus.
+By offloading heavy computation to provers, zkEVMs reduce validator requirements to lightweight proof checking. Even a modest device—some researchers suggest a **Raspberry Pi**—could verify proofs. By drastically lowering the hardware cost barrier, zkEVMs preserve a broad validator set alongside existing requirements (e.g., 32 ETH stake), ensuring that no single group dominates consensus.
 
 ## Finality Delays and Missed Slots
 
