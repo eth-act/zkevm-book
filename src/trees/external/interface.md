@@ -4,7 +4,7 @@ Specifically, we define the functionality they offer by outlining their syntax a
 With this definition in place, we can treat zkEVMs as a black box throughout the remainder of this part.
 We invite the reader to take a pause after this section and think about which problems in Ethereum could be solved using zkEVMs.
 
-> **Remark:** We sometimes use the terms *zkVM* and *zkEVM* interchangeably, although they historically have a slightly different meaning: while a zkVM can prove the execution of a general program, a zkEVM was meant to prove the execution of the Ethereum Virtual Machine (EVM). Our definition is actually closer to a zkVM, but the programs that we input will be Ethereum clients.
+> **Remark:** We sometimes use the terms *zkVM* and *zkEVM* interchangeably, although they historically have a slightly different meaning: while a zkVM can prove the execution of a general program, a zkEVM was meant to prove the execution of the Ethereum Virtual Machine (EVM). Our definition is actually closer to a zkVM, but the programs that we input will be the state transition functions of Ethereum clients.
 
 ## Intuition
 At a high level, zkEVMs provide a *proof of correct execution*.
