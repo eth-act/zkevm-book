@@ -23,12 +23,17 @@ For now, we treat SNARGs as given.
 Importantly, because SNARGs are non-interactive, the proof that a single powerful prover Alice computes, can be used to convince *arbitrarily many verifiers* Bob.
 
 ## Syntactical Interface
-Let us now be more precise, and define the interface that a zkEVM provides.
+We now define the core interface that a zkEVM exposes:
 
 
-- use ERE style definition
+- `Prepare(f) -> vk`. This function takes as input a description of the program `f` and outputs a verification key `vk`. This key does not need to be kept secret.
+The `Prepare` step serves as a preprocessing phase, after which only the key `vk` must be retained. This can be advantageous: for example, `vk` is typically much smaller than the full description of `f`.
 
-> **Remark:**  refer to ere as an example that unifies the interface, say that this is important if we want to use them and compare them.
+- `Prove(f, x) -> (y, proof)`. This function is executed by the Prover. It runs the program `f` on input `x` to compute the output `y`, and simultaneously generates a short proof (more precisely, a *succinct argument*) attesting that `f(x) = y`.
+
+- `Verify(vk, x, y, proof) -> 0/1`. This function is executed by the Verifier. It checks the validity of the given proof with respect to the verification key `vk`. It outputs `0` (for reject) or `1` (for accept).
+
+> **Remark:** When talking about zkEVMs in Ethereum, it is important to agree on a syntax first. In fact, a [recent project](https://github.com/eth-act/ere) aims to unify the syntax existing zkVM implementations. The interface is only minimally more complex than what we have defined.
 
 ## Semantical Properties
 - what are the properties that they provide?
