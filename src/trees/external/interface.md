@@ -42,7 +42,7 @@ Now that we have a syntax at hand, we turn to the functionality, security, and e
 Namely, these are *completeness* (always can generate proofs for true statements), *soundness* (cannot generate proofs for false statements), and *succinctness* (proof is small and verification is cheaper than re-execution).
 
 > **Remark:**  Despite what the name might imply, zkEVMs generally do not provide *zero-knowledge* in the cryptographic sense, i.e., the property of revealing nothing beyond the validity of the statement. This confusion stems from a misuse of the term "ZK" within large parts of the blockchain community, where it is often used synonymously with succinctness. However, zero-knowledge and succinctness are *orthogonal* properties that a proof system may or may not possess. For example, many systems studied in the literature are zero-knowledge but not succinct.
-In reality, zkEVMs would be more accurately described as *succinct EVMs* or *SNARG-EVMs*. Nevertheless, we adopt the term "zkEVM" in this book to remain consistent with prevailing community terminology, despite its technical imprecision.
+> In reality, zkEVMs would be more accurately described as *succinct EVMs* or *SNARG-EVMs*. Nevertheless, we adopt the term "zkEVM" in this book to remain consistent with prevailing community terminology, despite its technical imprecision.
 
 ### Completeness
 The most basic property that zkEVMs should have is *completeness*.
