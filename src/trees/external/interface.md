@@ -52,7 +52,7 @@ Precisely, completeness means that the following always outputs `1`, for any fun
 ```
 vk := Prepare(f)
 (y, proof) := Prove(f, x)
-Output Verify(vk, x, y, proof)
+Output Verify(vk, x, y, proof) == 1 && y == f(x)
 ```
 
 ### Soundness
