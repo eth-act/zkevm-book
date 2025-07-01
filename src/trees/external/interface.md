@@ -81,5 +81,5 @@ The final property is an efficiency property known as *succinctness*.
 Intuitively, it means that verifying a proof is significantly cheaper than re-executing the underlying computation.
 More formally, we require that both the size of `proof` and the running time of `Verify` are sublinear in the running time of the original function `f`.
 
-In some practical zkEVM constructions, these quantities can even constant, depending only on a security parameter.
+In some practical zkEVM constructions, these quantities can even be constant, depending only on a security parameter.
 To give a concrete sense of scale: a proof attesting to the correctness of a large computation may be just a few hundred kilobytes.
