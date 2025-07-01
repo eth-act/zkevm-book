@@ -26,7 +26,6 @@ In the classical model, validators must re-execute each block before attesting. 
 
 The **succinctness** property ensures that proof verification stays fast and constant-time regardless of block complexity. While the prover still needs time to generate the proof (within the existing slot duration) validators no longer re-execute and can attest as soon as the proof is published. Finality remains tied to the fixed slot length (e.g., 12 s), but zkEVMs eliminate re-execution overhead, reducing missed votes and making confirmation windows more predictable—especially if slot times are later optimized.
 
-
 ## Gas Price Volatility and Accessibility
 
 Limited block capacity drives competition for inclusion, causing gas fees to spike under heavy demand and pricing out some users. Even with EIP-1559’s base-fee mechanism smoothing sudden jumps, sustained high demand can still raise fees enough to deter participation.
