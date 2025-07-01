@@ -35,7 +35,7 @@ The `Prepare` step serves as a preprocessing phase, after which only the key `vk
 
 - `Verify(vk, x, y, proof) -> 0/1`. This function is executed by the Verifier. It checks the validity of the given proof with respect to the verification key `vk`. It outputs `0` (for reject) or `1` (for accept).
 
-> **Remark:** When talking about zkEVMs in Ethereum, it is important to agree on a syntax first. In fact, a [recent project](https://github.com/eth-act/ere) aims to unify the syntax existing zkVM implementations. The interface is only minimally more complex than what we have defined.
+> **Remark:** When talking about zkEVMs in Ethereum, it is important to agree on a syntax first. In fact, a [recent project](https://github.com/eth-act/ere) aims to unify the syntax of existing zkVM implementations. The interface is only minimally more complex than what we have defined.
 
 ## Properties
 Now that we have a syntax at hand, we turn to the functionality, security, and efficiency properties that zkEVMs must provide.
