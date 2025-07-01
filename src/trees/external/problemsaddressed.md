@@ -8,7 +8,7 @@ Ethereum’s base layer (L1) processes only about 15–20 transactions per secon
 
 ### How zkEVMs help
 
-A single dedicated **prover** executes the entire block, including all contract calls and state changes, and generates a succinct proof of correctness. Validators then perform only a **proof verification** step, which is orders of magnitude cheaper than full re-execution. This shift allows Ethereum to increase the gas limit—and thus throughput—without raising validator hardware requirements or compromising decentralization.
+A single **builder** executes the entire block—performing all contract calls and state updates—and passes the resulting execution trace to a **prover**, which generates a succinct proof of correctness without needing full chain state. Validators then perform only a **proof verification** step, which is orders of magnitude cheaper than full re-execution. This shift allows Ethereum to increase the gas limit—and thus throughput—without raising validator hardware requirements or compromising decentralization.
 
 ## Risk of Validator Centralization
 
@@ -16,11 +16,11 @@ As block complexity and gas limits increase, only entities with high-end machine
 
 ### How zkEVMs help
 
-By offloading heavy computation to provers, zkEVMs reduce validator requirements to lightweight proof checking. Even a modest device—some researchers suggest a **Raspberry Pi Pico 2** (\~\$10)—could verify proofs. This inclusivity preserves a broad validator set and ensures that no single group can dominate consensus.
+By offloading heavy computation to provers, zkEVMs reduce validator requirements to lightweight proof checking. Even a modest device—some researchers suggest a **Raspberry Pi Pico 2** (\~\$10)—could verify proofs. By drastically lowering the hardware cost barrier, zkEVMs preserve a broad validator set alongside existing requirements (e.g., 32 ETH stake), ensuring that no single group dominates consensus.
 
-## Long Finality Times and High Latency
+## Finality Delays and Missed Slots
 
-In the classical model, each validator re-executes every block before attesting, so finality depends on the slowest participant. As blocks grow more complex, these re-execution delays can lead to unpredictable and lengthy confirmation times.
+In the classical model, validators must re-execute each block before attesting. If validators cannot complete re-execution in time, they simply miss the opportunity to vote—recording a missed slot—rather than delaying finality. Ethereum reaches economic finality once ≥66% of validators (directly or via child blocks) have attested.
 
 ### How zkEVMs help
 
