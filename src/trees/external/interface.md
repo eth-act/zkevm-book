@@ -16,7 +16,7 @@ They also share an input `x` and an output `y`, and Alice claims that `f(x) = y`
 How can Bob be confident this claim is correct?
 
 - *Naive solution.* Bob could re-execute `f` on input `x` himself, but this might be prohibitively expensive.
-- *Succinct argument solution.* Instead, Alice can produce [*succinct non-interactive argument* (SNARG)](https://eprint.iacr.org/2010/610.pdf), which convinces Bob that `f(x) = y`. "Succinct" here means that the argument is small in size and inexpensive to verify - much cheaper than full re-execution.
+- *Succinct argument solution.* Instead, Alice can produce a [*succinct non-interactive argument* (SNARG)](https://eprint.iacr.org/2010/610.pdf), which convinces Bob that `f(x) = y`. "Succinct" here means that the argument is small in size and inexpensive to verify - much cheaper than full re-execution.
 
 SNARGs are fascinating cryptographic constructs, and remarkably, they can be built efficiently [and unconditionally in the random oracle model](https://eprint.iacr.org/2016/116.pdf).
 For now, we treat SNARGs as given.
