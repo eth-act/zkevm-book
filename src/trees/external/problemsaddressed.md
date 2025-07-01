@@ -24,11 +24,12 @@ In the classical model, validators must re-execute each block before attesting. 
 
 ### How zkEVMs help
 
-The **succinctness** property ensures that proof verification remains fast and constant-time regardless of block complexity. Although the prover’s work may take time, validators no longer need to re-execute, so they can confirm blocks almost immediately once the proof is available. The result is shorter, more reliable finality windows—assuming provers are optimized and properly incentivized.
+The **succinctness** property ensures that proof verification stays fast and constant-time regardless of block complexity. While the prover still needs time to generate the proof—within the existing slot duration—validators no longer re-execute and can attest as soon as the proof is published. Finality remains tied to the fixed slot length (e.g., 12 s), but zkEVMs eliminate re-execution overhead, reducing missed votes and making confirmation windows more predictable—especially if slot times are later optimized.
+
 
 ## Gas Price Volatility and Accessibility
 
-Limited block capacity drives fierce competition for inclusion, causing gas fees to spike under heavy demand. High fees price out regular users and reduce accessibility.
+Limited block capacity drives competition for inclusion, causing gas fees to spike under heavy demand and pricing out some users. Even with EIP-1559’s base-fee mechanism smoothing sudden jumps, sustained high demand can still raise fees enough to deter participation.
 
 ### How zkEVMs help
 
@@ -38,11 +39,9 @@ With higher safe gas limits, zkEVMs expand block capacity and spread demand over
 
 ## Threat of Prover Killer Blocks
 
-Blocks containing extremely heavy or pathological workloads—so-called **prover killers**—can overwhelm both provers and validators, risking a stall in block finalization (liveness failure).
+Blocks containing extremely heavy or pathological workloads—so-called **prover killers**—can overwhelm provers, risking a stall in block finalization (liveness failure).
 
-> **What makes a block a “prover killer”?** An unusually large number of expensive opcodes, deep contract call graphs, or complex state reads that push execution time beyond practical limits.
-
-### How zkEVMs help
+> **What makes a block a “prover killer”?** Blocks containing operations whose on-chain gas costs don’t account for their proving complexity—i.e., cheap opcodes or interactions that incur heavy work at proof time but remain underpriced in gas.
 
 Even the heaviest blocks are reduced to succinct proofs, shielding validators from worst-case workloads. Moreover, assigning proving responsibility to block builders aligns incentives: builders must generate proofs themselves, so they avoid constructing blocks that are too costly to prove. This mechanism preserves liveness and prevents network stalls.
 
