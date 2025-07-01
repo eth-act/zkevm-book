@@ -9,7 +9,7 @@ We invite the reader to take a pause after this section and think about which pr
 ## Intuition
 At a high level, zkEVMs provide a *proof of correct execution*.
 
-Imagine two parties: a powerful *prover*, Alice, and a less powerful *verifier*, Bob.
+Imagine two parties: a computationally powerful *prover*, Alice, and a less powerful *verifier*, Bob.
 Both agree on a function `f` — for example, one implemented in Rust.
 They also share an input `x` and an output `y`, and Alice claims that `f(x) = y`.
 
@@ -21,7 +21,8 @@ How can Bob be confident this claim is correct?
 SNARGs are fascinating cryptographic constructs, and remarkably, they can be built efficiently [and unconditionally in the random oracle model](https://eprint.iacr.org/2016/116.pdf).
 For now, we treat SNARGs as given.
 
-Importantly, because SNARGs are non-interactive, the proof that a single powerful prover Alice computes, can be used to convince *arbitrarily many verifiers* Bob.
+Importantly, SNARGs are non-interactive: Alice just sends a single convincing argument (or proof) to Bob and they do not need to interact back and forth.
+Especially, the proof that a single powerful prover Alice computes, can be used to convince *arbitrarily many verifiers* Bob.
 
 ## Syntactical Interface
 We now define the core interface that a zkEVM exposes:
