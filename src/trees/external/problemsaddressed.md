@@ -24,6 +24,8 @@ By offloading heavy computation to provers, zkEVMs reduce validator requirements
 
 ## Finality Delays and Missed Slots
 
+### The Problem
+
 In the classical model, validators must re-execute each block before attesting. If a validator cannot complete re-execution in time, they simply miss the opportunity to submit a vote (resulting in a missed slot) rather than delaying finality. Ethereum reaches economic finality once at least 66% of validators (directly or via child blocks) have attested.
 
 ### How zkEVMs help
