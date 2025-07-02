@@ -4,6 +4,8 @@ Ethereum is one of the most widely used decentralized platforms, but it faces se
 
 ## Limited Throughput and Rising Costs
 
+### The Problem
+
 Ethereum’s base layer (L1) processes only about 15–20 transactions per second, constrained by the **block gas limit**, a cap on total computation per block. Under this limit, validators must re-run every transaction to confirm correctness. Raising the gas limit naively would force all validators to execute more work in the same slot time, requiring more powerful (and expensive) hardware and risking centralization as only large operators can keep pace.
 
 ### How zkEVMs help
