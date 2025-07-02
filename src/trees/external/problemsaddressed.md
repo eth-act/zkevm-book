@@ -26,11 +26,11 @@ By offloading heavy computation to provers, zkEVMs reduce validator requirements
 
 ### The Problem
 
-In the classical model, validators must re-execute each block before attesting. If a validator cannot complete re-execution in time, they simply miss the opportunity to submit a vote (resulting in a missed attestation) rather than delaying finality. Ethereum reaches economic finality once at least 66% of validators (directly or via child blocks) have attested.
+In the classical model, validators must re-execute each block before attesting. If a validator cannot complete re-execution in time, they simply miss the opportunity to submit a vote (resulting in a missed attestation) rather than delaying finality. Ethereum reaches economic finality once sufficiently many validators (directly or via child blocks) have attested.
 
 ### How zkEVMs help
 
-The **succinctness** property ensures that proof verification stays fast and constant-time regardless of block complexity. While the prover still needs time to generate the proof (within the existing slot duration) validators no longer re-execute and can attest as soon as the proof is published. Finality remains tied to the fixed slot length (e.g., 12 s), but zkEVMs eliminate re-execution overhead, reducing missed votes and making confirmation windows more predictable—especially if slot times are later optimized.
+The **succinctness** property ensures that proof verification stays fast and constant-time regardless of block complexity. While the prover still needs time to generate the proof (within the existing slot duration) validators no longer re-execute and can attest as soon as the proof is published. Finality remains tied to the fixed slot length (e.g., 12 s), but zkEVMs eliminate re-execution overhead, reducing missed votes and making confirmation windows more predictable, especially if slot times are later optimized.
 
 ## Gas Price Volatility and Accessibility
 
