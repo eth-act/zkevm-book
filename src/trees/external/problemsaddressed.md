@@ -34,6 +34,8 @@ The **succinctness** property ensures that proof verification stays fast and con
 
 ## Gas Price Volatility and Accessibility
 
+### The Problem
+
 Limited block capacity drives competition for inclusion, causing gas fees to spike under heavy demand and pricing out some users. Even with EIP-1559’s base-fee mechanism smoothing sudden jumps, sustained high demand can still raise fees enough to deter participation.
 
 ### How zkEVMs help
