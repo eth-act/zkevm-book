@@ -50,7 +50,7 @@ Blocks containing extremely heavy or pathological workloads, so-called **prover 
 
 > **What makes a block a “prover killer”?** Blocks containing operations whose on-chain gas costs don’t account for their proving complexity, i.e. cheap opcodes or interactions that incur heavy work at proof time but remain underpriced in gas.
 
-Even the heaviest blocks are reduced to succinct proofs, shielding validators from worst-case workloads. Moreover, assigning proving responsibility to block builders aligns incentives: builders must generate proofs themselves, so they avoid constructing blocks that are too costly to prove. This mechanism preserves liveness and prevents network stalls.
+Even the heaviest blocks are reduced to succinct proofs, shielding validators from worst-case workloads. Moreover, assigning proving responsibility to block builders could align incentives. If we assume that builders generate proofs themselves, they would avoid constructing blocks that are too costly to prove. This mechanism preserves liveness and prevents network stalls.
 
 ## Big Picture: A Unified Execution-Validation Architecture
 
