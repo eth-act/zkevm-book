@@ -8,9 +8,9 @@ Ethereum is one of the most widely used decentralized platforms, but it faces se
 
 Ethereum’s base layer (L1) processes only about 15–20 transactions per second, constrained by the **block gas limit**, a cap on total resources consumption per block. Under this limit, validators must re-run every transaction to confirm correctness. Raising the gas limit naively would force all validators to execute more work in the same slot time, requiring more powerful (and expensive) hardware and risking centralization as only large operators can keep pace.
 
-### How zkEVMs help
+#### How zkEVMs help
 
-A single **builder** executes the entire block—performing all contract calls and state updates, and passes the resulting execution trace to a **prover**, which generates a succinct proof of correctness without needing full chain state. Validators then perform only a **proof verification** step, which is orders of magnitude cheaper than full re-execution. This shift allows Ethereum to increase the gas limit (and thus throughput) without raising validator hardware requirements or compromising decentralization.
+A single **builder** executes the entire block—performing all contract calls and state updates—and passes the resulting execution trace to a **prover**, which generates a succinct proof of correctness without needing full chain state. Validators then perform only a **proof verification** step, which is orders of magnitude cheaper than full re-execution. This shift introduces a 1-of-N assumption for liveness (requiring at least one honest prover) and allows Ethereum to increase the gas limit (and thus throughput) without raising validator hardware requirements or compromising decentralization.
 
 ## Risk of Validator Centralization
 
