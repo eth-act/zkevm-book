@@ -36,7 +36,7 @@ The **succinctness** property ensures that proof verification stays fast and con
 
 ### The Problem
 
-Limited block capacity drives competition for inclusion, causing gas fees to spike under heavy demand and pricing out some users. Even with EIP-1559’s base-fee mechanism smoothing sudden jumps, sustained high demand can still raise fees enough to deter participation.
+Limited block capacity drives competition for inclusion, causing gas fees to spike under heavy demand and pricing out some users. Even with [EIP-1559](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1559.md)’s base-fee mechanism smoothing sudden jumps, sustained high demand can still raise fees enough to deter participation.
 
 ### How zkEVMs help
 
