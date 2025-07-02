@@ -14,6 +14,8 @@ A single **builder** executes the entire block—performing all contract calls a
 
 ## Risk of Validator Centralization
 
+### The Problem
+
 As block complexity and gas limits increase, only entities with high-end machines can keep up with full re-execution. This hardware barrier shrinks the pool of potential validators, undermining the network’s decentralized security model.
 
 ### How zkEVMs help
