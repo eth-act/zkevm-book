@@ -1,6 +1,6 @@
 # Incentives
 
-Robust incentive structures are necessary to ensure zkEVMs can be implemented on Ethereum. In this section, we highlight the three main incentive problems that need to be addressed.
+Robust incentive structures are necessary to ensure zkEVMs can be implemented on Ethereum. In this section, we highlight the main incentive problems that need to be addressed. Some of these problems may also be considered protocol architecture questions whose method of analysis usually benefits from a resource pricing viewpoint which is why they are included in the Incentives section.
 
 ## Fallback Provers
 At all times, there has to be at least one prover willing and able to prove blocks. That is, proving requires a 1-out-of-N trust assumption. The goal of the “Fallback Provers” project is to ensure this 1-out-of-N trust assumption is credible.  Credibility is obtained by:
@@ -28,3 +28,12 @@ It may be desirable to incentivize builders to source proofs from an open market
 2. What would an active and open market of provers in the normal case look like in-protocol?
 
 This project is not necessarily a bottleneck for zkEVM adoption. Ethereum could maintain its liveness with just fallback provers without having a competitive prover market, therefore, this project is lower priority.
+
+## Censorship Resistance
+zkEVMs leverage the asymmetry in computational power between a sophisticated prover and an unsophisticated validator set. Increased computation needed to build and prove blocks means it may not be possible for every validator to build a block locally. Ethereum may [decouple throughput from local block building](https://ethresear.ch/t/decoupling-throughput-from-local-building/22004), which means it has to source its censorship reistance in another way than local block building. While [FOCIL](https://eips.ethereum.org/EIPS/eip-7805) is a popular proposal to provide censorship resistance for regular transactions, a censorship resistance tool is still necessary for blobs. Francesco has made initial explorations on blob censorship resistance via mempool tickets, see [here](https://notes.ethereum.org/7EGS7DVtTAKnqlh9LDEWxQ?view#Multiple-independent-availability-checks) and [here](https://hackmd.io/@fradamt/blob-mempool-tickets), and a more concrete proposal from Mike and Julian [here](https://ethresear.ch/t/on-the-future-of-the-blob-mempool/22613).
+
+## Offchain or Onchain Proofs
+Proofs can live either on- or offchain. Offchain proofs may have benefits such as reduced storage costs and potentially more verifier flexibility. The benefits and drawbacks of on- or offchain proofs must be better understood. Vitalik introduced the concept in [this post](https://notes.ethereum.org/@vbuterin/enshrined_zk_evm), and Justin further explored it [here](https://ethresear.ch/t/native-rollups-superpowers-from-l1-execution/21517).
+
+## Network throughput
+zkEVMs remove the need for validators to re-execute transactions to verify a block. Still, some parties may want to re-execute (parts of) blocks, for example, to obtain the current state. There should probably still be a limit to the amount of compute a block can contain, but what should that limit be set to? This projects aims to understand the potential increases in network throughput attributable to zkEVMs.
