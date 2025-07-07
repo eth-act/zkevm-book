@@ -32,7 +32,7 @@ In the classical model, validators must re-execute each block before attesting. 
 
 The **succinctness** property ensures that proof verification stays fast and constant-time regardless of block complexity. While the prover still needs time to generate the proof (within the existing slot duration) validators no longer re-execute and can attest as soon as the proof is published. Finality remains tied to the fixed slot length (e.g., 12 s), but zkEVMs eliminate re-execution overhead, reducing missed votes and making confirmation windows more predictable, especially if slot times are later optimized.
 
-## Gas Price Volatility and Accessibility
+## Gas Prices and Accessibility
 
 ### The Problem
 
@@ -50,7 +50,9 @@ Blocks containing extremely heavy or pathological workloads, so-called **prover 
 
 > **What makes a block a “prover killer”?** Blocks containing operations whose on-chain gas costs don’t account for their proving complexity, i.e. cheap opcodes or interactions that incur heavy work at proof time but remain underpriced in gas.
 
-Even the heaviest blocks are reduced to succinct proofs, shielding validators from worst-case workloads. Moreover, assigning proving responsibility to block builders could align incentives. If we assume that builders generate proofs themselves, they would avoid constructing blocks that are too costly to prove. This mechanism preserves liveness and prevents network stalls.
+Even the heaviest blocks are reduced to succinct proofs, shielding validators from worst-case workloads. Moreover, [assigning proving responsibility to the block builder](https://ethresear.ch/t/prover-killers-killer-you-build-it-you-prove-it/22308) could align incentives. If builders generate proofs themselves, they would avoid constructing blocks that are too costly to prove. This mechanism preserves liveness and prevents network stalls.
+
+Even if builders are responsible for proofs of their blocks, benchmarking how expensive opcodes are to prove is important as it could enable [prover gas costs](https://ethresear.ch/t/prover-killers-killer-you-build-it-you-prove-it/22308): costs in terms of gas units that resemble the relative costs of proving an opcode compared to the other opcodes. Censorship-resistance tools, like [FOCIL](https://eips.ethereum.org/EIPS/eip-7805), could then force builders to include transactions summing up to at least a certain amount of prover gas, while not capping the amount of prover gas provers may include (keeping all other constraints, like state growth, constant).
 
 ## Big Picture: A Unified Execution-Validation Architecture
 
