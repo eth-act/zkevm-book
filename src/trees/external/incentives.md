@@ -1,6 +1,6 @@
 # Incentives
 
-Robust incentive structures are necessary to ensure zkEVMs can be implemented on Ethereum. In this section, we highlight the main incentive problems that need to be addressed. Some of these problems may also be considered protocol architecture questions whose method of analysis usually benefits from a resource pricing viewpoint which is why they are included in the Incentives section.
+Robust incentive structures are necessary to ensure zkEVMs can be implemented on Ethereum. In this section, we highlight the main incentive problems that need to be addressed. Some of these problems may also be considered protocol architecture questions whose method of analysis usually benefits from a resource pricing viewpoint which is why they are included in the Incentives chapter.
 
 ## Fallback Provers
 At all times, there has to be at least one prover willing and able to prove blocks. That is, proving requires a 1-out-of-N trust assumption. The goal of the “Fallback Provers” project is to ensure this 1-out-of-N trust assumption is credible.  Credibility is obtained by:
