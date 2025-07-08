@@ -59,11 +59,11 @@ Nonetheless, again, for many teams, these costs are offset by MIPS’s simplicit
 
 ## Cairo: A zk-Optimized ISA
 
-[Cairo](https://eprint.iacr.org/2021/1063.pdf), developed by StarkWare, represents a radical departure from conventional ISAs. It was not adapted for proofs but designed from the ground up as a **STARK-friendly CPU architecture**. The goal was to create an instruction set that is inherently efficient to prove, which led to a design that re-imagines how instructions interact with memory, registers, and computation itself.
+[Cairo](https://eprint.iacr.org/2021/1063.pdf), developed by StarkWare, represents a radical departure from conventional ISAs. It was not adapted for proofs but designed from the ground up as a **SNARK-friendly CPU architecture**. The goal was to create an instruction set that is inherently efficient to prove, which led to a design that re-imagines how instructions interact with memory, registers, and computation itself.
 
 ### An 'Algebraic RISC' Instruction Set
 
-At its core, Cairo's ISA is an **Algebraic RISC** (Reduced Instruction Set Computer). This means its instruction set is minimal and its native data type is not a 32 or 64-bit integer, but an element in a finite field. The core instructions perform simple field arithmetic, like addition and multiplication. This "algebraic" nature is the key to its efficiency, as these instructions map directly and cheaply to the polynomial constraints of a STARK proof.
+At its core, Cairo's ISA is an **Algebraic RISC** (Reduced Instruction Set Computer). This means its instruction set is minimal and its native data type is not a 32 or 64-bit integer, but an element in a finite field. The core instructions perform simple field arithmetic, like addition and multiplication. This "algebraic" nature is the key to its efficiency, as these instructions map directly and cheaply to the polynomial constraints of a SNARK proof.
 
 ### Memory-by-Assertion and Instruction Format
 
