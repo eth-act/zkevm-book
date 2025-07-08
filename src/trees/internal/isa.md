@@ -25,9 +25,9 @@ For zkVMs, RISC-V offers a strong starting point thanks to its mature and robust
 
 This broad compatibility lowers barriers to adoption and allows teams to leverage existing debugging, profiling, and other tools. It also enables rapid prototyping and smoother transition from prototype to production. In practice, this means zkVM teams can focus more on optimizing their proving systems rather than reinventing basic compilation and developer workflows.
 
-### Challenges for zk Proofs
+### Challenges for SNARK Proofs
 
-Despite these advantages, RISC-V was not designed with zero-knowledge proofs in mind. In a traditional silicon processor, registers allow fast local data access and reduce expensive memory operations. But in a zkVM, every register becomes an additional column in the execution trace, directly increasing prover cost and proof size.
+Despite these advantages, RISC-V was not designed with SNARK proofs in mind. In a traditional silicon processor, registers allow fast local data access and reduce expensive memory operations. But in a zkVM, every register becomes an additional column in the execution trace, directly increasing prover cost and proof size.
 
 Moreover, dynamic control flow mechanisms such as conditional jumps and branches are highly efficient on hardware but become cumbersome in a zk context. Circuits must encode all possible branches and conditions to ensure correctness, which bloats the constraint system and slows down proof generation.
 
@@ -51,7 +51,7 @@ Moreover, MIPS has a long-standing, mature ecosystem and has been the basis for 
 
 ### Limitations and Trade-offs
 
-While MIPS offers a streamlined and simpler architecture than RISC-V, it still inherits a key limitation shared by most general-purpose ISAs: it was not designed with zero-knowledge proofs in mind.
+While MIPS offers a streamlined and simpler architecture than RISC-V, it still inherits a key limitation shared by most general-purpose ISAs: it was not designed with SNARK proofs in mind.
 
 Even with its reduced instruction set, MIPS programs involve registers and explicit low-level control flow, which can lead to extra columns and larger execution traces in a zk proof system. This ultimately results in higher prover costs and longer proof generation times than purpose-built zk-optimized ISAs.
 
@@ -59,7 +59,7 @@ Nonetheless, again, for many teams, these costs are offset by MIPS’s simplicit
 
 ## Cairo: A zk-Optimized ISA
 
-Cairo, developed by StarkWare, represents a radical departure from conventional ISAs. It was not adapted for proofs but designed from the ground up as a **STARK-friendly CPU architecture**. The goal was to create an instruction set that is inherently efficient to prove, which led to a design that re-imagines how instructions interact with memory, registers, and computation itself.
+[Cairo](https://eprint.iacr.org/2021/1063.pdf), developed by StarkWare, represents a radical departure from conventional ISAs. It was not adapted for proofs but designed from the ground up as a **STARK-friendly CPU architecture**. The goal was to create an instruction set that is inherently efficient to prove, which led to a design that re-imagines how instructions interact with memory, registers, and computation itself.
 
 ### An 'Algebraic RISC' Instruction Set
 
