@@ -27,7 +27,7 @@ This broad compatibility lowers barriers to adoption and allows teams to leverag
 
 ### Challenges for SNARKs
 
-Despite these advantages, RISC-V was not designed with SNARKs in mind. In a traditional silicon processor, registers allow fast local data access and reduce expensive memory operations. But in a zkVM, every register becomes an additional column in the execution trace, directly increasing prover cost and proof size.
+Despite these advantages, RISC-V was not designed with SNARKs in mind. In a traditional silicon processor, registers allow fast local data access and reduce expensive memory operations. But in a zkVM, every register directly increases prover cost and proof size.
 
 Moreover, dynamic control flow mechanisms such as conditional jumps and branches are highly efficient on hardware but become cumbersome in a zk context. Circuits must encode all possible branches and conditions to ensure correctness, which bloats the constraint system and slows down proof generation.
 
