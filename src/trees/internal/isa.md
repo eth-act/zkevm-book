@@ -27,7 +27,7 @@ This broad compatibility lowers barriers to adoption and allows teams to leverag
 
 ### Challenges for SNARKs
 
-Despite these advantages, RISC-V was not designed with SNARK proofs in mind. In a traditional silicon processor, registers allow fast local data access and reduce expensive memory operations. But in a zkVM, every register becomes an additional column in the execution trace, directly increasing prover cost and proof size.
+Despite these advantages, RISC-V was not designed with SNARKs in mind. In a traditional silicon processor, registers allow fast local data access and reduce expensive memory operations. But in a zkVM, every register becomes an additional column in the execution trace, directly increasing prover cost and proof size.
 
 Moreover, dynamic control flow mechanisms such as conditional jumps and branches are highly efficient on hardware but become cumbersome in a zk context. Circuits must encode all possible branches and conditions to ensure correctness, which bloats the constraint system and slows down proof generation.
 
@@ -43,7 +43,7 @@ MIPS is a classic RISC-style instruction set architecture, known for its simplic
 
 ### Why MIPS for zkVMs?
 
-In the context of SNARK proofs, MIPS offers a few appealing properties. Its extremely straightforward design and reduced instruction set can lower execution complexity compared to more feature-rich ISAs like RISC-V. Fewer instructions and simpler decoding logic mean that the corresponding zk circuits may have fewer constraints and slightly smaller execution traces.
+In the context of SNARKs, MIPS offers a few appealing properties. Its extremely straightforward design and reduced instruction set can lower execution complexity compared to more feature-rich ISAs like RISC-V. Fewer instructions and simpler decoding logic mean that the corresponding zk circuits may have fewer constraints and slightly smaller execution traces.
 
 For example, projects like **zkMIPS** (by ZKM) have chosen MIPS specifically to capitalize on these simplifications. By using MIPS, they aim to minimize the number of cycles needed and reduce overhead during proof generation, all while preserving a strong developer experience.
 
@@ -51,7 +51,7 @@ Moreover, MIPS has a long-standing, mature ecosystem and has been the basis for 
 
 ### Limitations and Trade-offs
 
-While MIPS offers a streamlined and simpler architecture than RISC-V, it still inherits a key limitation shared by most general-purpose ISAs: it was not designed with SNARK proofs in mind.
+While MIPS offers a streamlined and simpler architecture than RISC-V, it still inherits a key limitation shared by most general-purpose ISAs: it was not designed with SNARKs in mind.
 
 Even with its reduced instruction set, MIPS programs involve registers and explicit low-level control flow, which can lead to extra columns and larger execution traces in a zk proof system. This ultimately results in higher prover costs and longer proof generation times than purpose-built zk-optimized ISAs.
 
