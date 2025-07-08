@@ -25,7 +25,7 @@ For zkVMs, RISC-V offers a strong starting point thanks to its mature and robust
 
 This broad compatibility lowers barriers to adoption and allows teams to leverage existing debugging, profiling, and other tools. It also enables rapid prototyping and smoother transition from prototype to production. In practice, this means zkVM teams can focus more on optimizing their proving systems rather than reinventing basic compilation and developer workflows.
 
-### Challenges for SNARK Proofs
+### Challenges for SNARKs
 
 Despite these advantages, RISC-V was not designed with SNARK proofs in mind. In a traditional silicon processor, registers allow fast local data access and reduce expensive memory operations. But in a zkVM, every register becomes an additional column in the execution trace, directly increasing prover cost and proof size.
 
