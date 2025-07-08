@@ -17,7 +17,7 @@ In this section, we explore the main approaches under consideration: general-pur
 
 ## RISC-V: General-Purpose Simplicity and Dominance
 
-RISC-V is an open, modular, and minimal instruction set originally designed for conventional hardware processors. Its clean design, fixed-length instructions, and straightforward register model — with as few as 47 core instructions in its minimal base integer set (RV32I) — make it easy to implement, understand, and extend.
+[RISC-V](https://riscv.org/specifications/) is an open, modular, and minimal instruction set originally designed for conventional hardware processors. Its clean design, fixed-length instructions, and straightforward register model — with as few as 47 core instructions in its minimal base integer set (RV32I) — make it easy to implement, understand, and extend.
 
 ### Strong Tooling and Developer Familiarity
 
@@ -43,7 +43,7 @@ MIPS is a classic RISC-style instruction set architecture, known for its simplic
 
 ### Why MIPS for zkVMs?
 
-In the context of SNARKs, MIPS offers a few appealing properties. Its extremely straightforward design and reduced instruction set can lower execution complexity compared to more feature-rich ISAs like RISC-V. Fewer instructions and simpler decoding logic mean that the corresponding zk circuits may have fewer constraints and slightly smaller execution traces.
+In the context of SNARKs, [MIPS](https://en.wikipedia.org/wiki/MIPS_architecture) offers a few appealing properties. Its extremely straightforward design and reduced instruction set can lower execution complexity compared to more feature-rich ISAs like RISC-V. Fewer instructions and simpler decoding logic mean that the corresponding zk circuits may have fewer constraints and slightly smaller execution traces.
 
 For example, projects like **zkMIPS** (by ZKM) have chosen MIPS specifically to capitalize on these simplifications. By using MIPS, they aim to minimize the number of cycles needed and reduce overhead during proof generation, all while preserving a strong developer experience.
 
@@ -89,7 +89,7 @@ Recent zkVM research has produced new fully custom Instruction Set Architectures
 
 ### Valida: Minimal and Register-Free Design
 
-Valida takes a radically simplified approach to ISA design by removing all general-purpose registers. It uses only a minimal set of special-purpose pointers to manage control flow and stack frames. All local variables and intermediate data are managed on the stack or in memory.
+[Valida](https://www.lita.foundation/blog/custom-instruction-set-architecture-achieving-ultimate-efficiency-in-zk-proving) takes a radically simplified approach to ISA design by removing all general-purpose registers. It uses only a minimal set of special-purpose pointers to manage control flow and stack frames. All local variables and intermediate data are managed on the stack or in memory.
 
 This design choice dramatically reduces the number of columns in the execution trace and simplifies constraint systems, directly improving prover performance. Additionally, Valida introduces specialized instruction formats that combine related operations to reduce branching overhead and further minimize circuit complexity.
 
@@ -97,7 +97,7 @@ A key feature is its tight integration with high-level languages via a dedicated
 
 ### PetraVM: Binary-Field-Oriented ISA
 
-PetraVM is another custom ISA built specifically to leverage the advantages of binary-field SNARKs. Instead of using traditional register files, PetraVM's ISA focuses on minimizing state and simplifying control flow at the instruction level.
+[PetraVM](https://petraprover.github.io/PetraVM/specification.html) is another custom ISA built specifically to leverage the advantages of binary-field SNARKs. Instead of using traditional register files, PetraVM's ISA focuses on minimizing state and simplifying control flow at the instruction level.
 
 Its instruction set is designed to be minimal and highly composable, using static function frames and strictly defined pointer arithmetic to reduce the complexity of branching and data manipulation. PetraVM supports a flexible and extensible instruction set, which can be expanded with additional operations without increasing baseline proof costs when unused.
 
@@ -105,11 +105,11 @@ This focus on a clean, minimal instruction set allows PetraVM to efficiently sup
 
 ## Hybrid and Intermediate Approaches: WASM and eBPF
 
-Beyond purely general-purpose or purely custom ISAs, hybrid approaches also exist. One prominent example is WebAssembly (WASM). While WASM is not an ISA in the strict sense, it serves as an intermediate representation that many modern languages (including Rust and Go) can compile to. WASM features a formally specified stack model and predictable control flow, making it a convenient high-level target.
+Beyond purely general-purpose or purely custom ISAs, hybrid approaches also exist. One prominent example is [WebAssembly (WASM)](https://webassembly.org/specs/). While WASM is not an ISA in the strict sense, it serves as an intermediate representation that many modern languages (including Rust and Go) can compile to. WASM features a formally specified stack model and predictable control flow, making it a convenient high-level target.
 
 In zkVM design, WASM can serve as an initial compilation target, which is then further transformed into a zk-optimized backend representation. This approach combines the robust tooling and developer familiarity of WASM with the performance advantages of custom lower-level circuits. Some projects explore further introducing specialized stack or memory models (like Write Once Memory) during this transpilation step to optimize the final zk circuit.
 
-eBPF, originally designed for high-speed sandboxed execution in environments like Linux and Solana, can be also considered. Its simplicity and efficiency make it attractive for certain use cases, but it has not yet been deeply explored in zk contexts, and its ultimate potential remains open for future research.
+[eBPF](https://www.ietf.org/archive/id/draft-thaler-bpf-isa-00.html), originally designed for high-speed sandboxed execution in environments like Linux and Solana, can be also considered. Its simplicity and efficiency make it attractive for certain use cases, but it has not yet been deeply explored in zk contexts, and its ultimate potential remains open for future research.
 
 ## Balancing Efficiency and Compatibility
 
