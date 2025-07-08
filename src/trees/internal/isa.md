@@ -120,3 +120,16 @@ General-purpose ISAs like RISC-V and MIPS offer immediate integration with exist
 Today, **RISC-V has emerged as the dominant choice among zkVMs**, not only because of its strong ecosystem and tooling maturity, but also due to recent advances that have dramatically improved its proving efficiency. Several zkVM projects have successfully achieved real-time proving of Ethereum mainnet blocks using RISC-V, demonstrating that its original proof inefficiencies can be effectively mitigated through careful circuit design and engineering optimizations.
 
 Instruction Set Architecture thus shapes the core trade-offs in zkVM design. It dictates not only how programs are written and executed but also how efficiently and succinctly they can be proven.
+
+
+## ISA Comparison Recap
+
+| ISA       | Pros                                                                                     | Cons                                                                                   |
+|------------|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| **RISC-V** | - Mature tooling and compiler support (LLVM) <br> - Familiar to developers <br> - Modular and extensible <br> - Open source | - Originally not designed for proofs (many registers, dynamic control flow) <br> - Larger constraint systems without optimization |
+| **MIPS**  | - Simple core design <br> - Few instructions <br> - Well-known in academia | - Still general-purpose (not zk-optimized) <br> - Registers and branching still add overhead |
+| **Cairo** | - Designed from scratch for zk efficiency <br> - Algebraic field-based instructions <br> - Minimal register logic | - New programming model <br> - Steep learning curve |
+| **Valida** | - No general-purpose registers <br> - Simplified control flow <br> - LLVM backend for easy adoption | - Requires custom compilers and circuits <br> - Less general-purpose flexibility |
+| **PetraVM** | - Binary-field-optimized <br> - Minimal and composable instruction set <br> - Supports advanced features like recursion | - Requires fully custom stack and new toolchains <br> - Still early-stage adoption |
+| **WASM** | - Very broad language support <br> - Standard intermediate representation <br> - Familiar to many developers | - Not a native ISA (requires transpilation for zk) <br> - Proof system efficiency depends on backend design |
+| **eBPF** | - Extremely simple and efficient bytecode <br> - Proven in sandboxing contexts | - Not yet explored deeply in zk context <br> - Limited tooling for zk |
