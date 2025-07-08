@@ -45,7 +45,7 @@ MIPS is a classic RISC-style instruction set architecture, known for its simplic
 
 In the context of SNARKs, [MIPS](https://en.wikipedia.org/wiki/MIPS_architecture) offers a few appealing properties. Its extremely straightforward design and reduced instruction set can lower execution complexity compared to more feature-rich ISAs like RISC-V. Fewer instructions and simpler decoding logic mean that the corresponding zk circuits may have fewer constraints and slightly smaller execution traces.
 
-For example, projects like **zkMIPS** (by ZKM) have chosen MIPS specifically to capitalize on these simplifications. By using MIPS, they aim to minimize the number of cycles needed and reduce overhead during proof generation, all while preserving a strong developer experience.
+For example, projects like [**zkMIPS** (by ZKM)](https://docs.zkm.io/) have chosen MIPS specifically to capitalize on these simplifications. By using MIPS, they aim to minimize the number of cycles needed and reduce overhead during proof generation, all while preserving a strong developer experience.
 
 Moreover, MIPS has a long-standing, mature ecosystem and has been the basis for many teaching tools and simulators. For example, a program written in Rust, Go, or other high-level languages can be compiled into MIPS machine code. This history provides a foundation of reliable tooling and makes it easier to port or compile programs.
 
