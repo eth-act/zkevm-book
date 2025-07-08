@@ -53,7 +53,7 @@ Moreover, MIPS has a long-standing, mature ecosystem and has been the basis for 
 
 While MIPS offers a streamlined and simpler architecture than RISC-V, it still inherits a key limitation shared by most general-purpose ISAs: it was not designed with SNARKs in mind.
 
-Even with its reduced instruction set, MIPS programs involve registers and explicit low-level control flow, which can lead to extra columns and larger execution traces in a zk proof system. This ultimately results in higher prover costs and longer proof generation times than purpose-built zk-optimized ISAs.
+Even with its reduced instruction set, MIPS programs involve registers and explicit low-level control flow, which can lead to larger execution traces in a zk proof system. This ultimately results in higher prover costs and longer proof generation times than purpose-built zk-optimized ISAs.
 
 Nonetheless, again, for many teams, these costs are offset by MIPS’s simplicity, mature tooling, and decades of accumulated knowledge. The trade-off often feels acceptable because it allows developers to leverage familiar compiler pipelines and focus on building applications rather than deeply optimizing circuits from scratch.
 
