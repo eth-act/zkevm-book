@@ -28,7 +28,8 @@ Hardware also plays an important role: proofs are generated using powerful compu
 
 #### Guarding Against Prover Killers
 
-Real-time proving must also protect against so-called **prover killer blocks**, blocks that are very hard to prove. To prevent this, the protocol can set strict time limits for when proofs must be submitted. This forces block builders to make sure their blocks can be proven quickly, avoiding blocks that might slow down or stop the network.
+Real-time proving must also protect against so-called **prover killer blocks**, blocks that are very hard to prove (see [Threat of Prover Killer Blocks](../external/problemsaddressed.html#threat-of-prover-killer-blocks)). To prevent this, the protocol can set strict time limits for when proofs must be submitted. This forces block builders to make sure their blocks can be proven quickly, avoiding blocks that might slow down or stop the network.
+
 
 #### Toward Future Slot Times
 
