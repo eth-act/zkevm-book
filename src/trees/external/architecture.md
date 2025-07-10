@@ -1,5 +1,5 @@
 # Architecture
-
+> Note. Section under construction
 - Stateless client
 - Stateful client
 - Two primary patterns have emerged for client integration (to be explored and discussed in more details)

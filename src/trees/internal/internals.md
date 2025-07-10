@@ -1,5 +1,5 @@
 # Part II: zkVM Internals
-
+> Note. Section under construction.
 - in this second part of the book, we introduce the basic concepts that underlie the construction of zkVMs
 - that is, we answer the question "How do zkVMs work internally?"
 - of course, each zkVM team made different design decisions and the different zkVMs work in different ways

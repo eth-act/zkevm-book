@@ -1,5 +1,6 @@
 # Security Considerations
 
+> Note. Section under construction.
 
 - give an intuition for why the steps are "secure" / preserve knowledge soundness
 - refer to works that have studied the security formally, for the interested reader
