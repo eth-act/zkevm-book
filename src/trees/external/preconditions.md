@@ -8,7 +8,17 @@
 
 ### Real-Time Proving
 
-A fundamental prerequisite for integrating zkEVMs directly into Ethereum’s base layer is **real-time proving**: the ability to generate a succinct validity proof for a block within the same slot in which it is proposed (today, 12 seconds).
+A fundamental requirement for integrating zkEVMs directly into Ethereum’s base layer is **real-time proving**: the ability to generate a succinct validity proof for a block within the same slot time in which it is proposed (today, about 12 seconds).
+
+Concretely, this means that after a block is fully assembled — including all transactions and state updates — a prover must generate a proof and share it with validators before the slot ends. The entire process, from finalizing the block contents to outputting and distributing the proof, must be completed within this tight time frame.
+
+In this model, the block proposer first selects transactions from the mempool and assembles the block as usual. Once the block content is fixed, a zkVM runs the block execution logic and produces a compact zk proof attesting that all computations are correct. Validators then verify this succinct proof instead of re-executing the full block themselves.
+
+Since the proof is typically finalized near the end of the slot, validators can quickly verify it before moving on to the next block. This introduces a *deferred execution check*: validators no longer perform full execution upfront but rely on a proof that can be checked very quickly. Despite this shift, Ethereum’s liveness and finality guarantees are maintained because this check still occurs entirely within each slot.
+
+The diagram below summarizes this real-time proving flow:
+
+![Real time proving](images/real-time-proving.svg)
 
 #### Why Real-Time Proving is Important
 
@@ -24,7 +34,9 @@ Achieving real-time proving relies on a combination of cryptographic and enginee
 
 To make proofs fast enough, these zkVMs must be carefully designed to minimize unnecessary work and handle large blocks efficiently. In practice, proving a block requires breaking it into smaller parts that can be processed in parallel and then combined into one final proof. The final proof should also be small enough to be posted onchain.
 
-Hardware also plays an important role: proofs are generated using powerful computers, often with many processors working together. The overall challenge is to ensure that all these steps — running the computation, generating the trace, and assembling the proof — can be completed within the strict time limit of each Ethereum block slot.
+Hardware plays a critical role as well. Today, proofs are typically generated using powerful multi-node setups equipped with many GPUs, but recent trends show rapid progress. Improvements in parallelization, recursion strategies, and specialized acceleration are pushing proof times lower each year.
+
+Importantly, data preparation steps (like generating execution traces and Merkle paths) also require careful optimization to stay within the time budget. Advances in data fetching, caching strategies, and efficient state access mechanisms all contribute to enabling real-time performance.
 
 #### Guarding Against Prover Killers
 
