@@ -28,6 +28,15 @@ If a proof arrives late — even by a few seconds — validators cannot attest i
 
 Thus, real-time proving is an **absolute requirement** to replace re-execution at L1 and maintain the same block time and finality cadence.
 
+#### A Standardized Definition for L1
+
+To align the efforts of zkVM teams, the Ethereum Foundation has proposed a set of concrete targets that define real-time proving for L1 integration. These standards ensure that provers are not only fast but also secure, accessible, and practical.
+
+  * **Latency:** A proof must be generated in **≤ 10 seconds** for 99% of mainnet blocks. This leaves a \~2-second buffer within the 12-second slot for network propagation.
+  * **Security:** Proofs must provide at least **128 bits of security**. An initial 100-bit level may be acceptable temporarily, but 128 bits is the long-term goal.
+  * **Proof Size:** The final proof must be **≤ 300 KiB** and must not rely on recursive wrappers that use trusted setups.
+  * **Code:** The entire prover stack must be **fully open source**.
+
 #### Technological Foundations
 
 Achieving real-time proving relies on a combination of cryptographic and engineering advances. At the heart of this effort are special virtual machines called zkVMs, which allow us to run Ethereum’s state transition logic and produce a short proof that the computation was done correctly.
@@ -54,3 +63,19 @@ Recent advances show that proving technology is evolving very rapidly. As slot t
 Beyond speed, real-time proving has important consequences for decentralization. If proof systems require massive GPU clusters or expensive specialized hardware, only a few large operators could run them, introducing new centralization risks.
 
 To address this, ongoing work focuses on reducing both hardware and energy costs. The goal is to make provers small and efficient enough to run on modest clusters, and eventually even on consumer-grade machines such as powerful desktops or laptops. In the long term, this could allow individuals, small organizations, or community groups to participate in proving, supporting a more open and decentralized network.
+
+#### Decentralization and "Home Proving"
+
+Beyond speed, real-time proving has critical consequences for decentralization. If proof systems require massive GPU clusters or expensive specialized hardware, only a few large operators could run them, introducing new centralization risks.
+
+To address this, the concept of **"home proving"** has become a key goal. This is the effort to make provers so efficient that solo stakers can run them from home, preventing a reliance on a few large, centralized operators. To make this goal tangible, the standardized definition for L1 provers includes specific constraints on hardware and energy costs:
+
+* **On-prem Capital Expenditure (CAPEX):** ≤ $100,000 USD for the necessary hardware.
+* **On-prem Power Consumption:** ≤ 10 kW, a limit designed to fit within the power capacity of a standard residential home.
+
+The ultimate goal is to make provers small and efficient enough to run on modest clusters, and eventually even on consumer-grade machines such as powerful desktops or laptops. By making home proving feasible, the network can maintain a high degree of censorship resistance and decentralization, allowing individuals, small organizations, or community groups to participate in proving and supporting a more open and resilient network.
+
+
+#### Resources for Further Information
+
+- [Shipping an L1 zkEVM #1: Realtime Proving](https://blog.ethereum.org/2025/07/10/realtime-proving) by Sophia Gold
