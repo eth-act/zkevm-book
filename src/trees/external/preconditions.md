@@ -58,12 +58,6 @@ Ethereum’s long-term roadmap envisions reducing slot times (for example to 6 s
 
 Recent advances show that proving technology is evolving very rapidly. As slot times shorten, proving systems are expected to keep improving in parallel, aiming for proofs in 6 seconds, 3 seconds, or even under 1 second in the future. This makes fast proving a moving target that will continue to push technical progress forward.
 
-#### Decentralization Implications
-
-Beyond speed, real-time proving has important consequences for decentralization. If proof systems require massive GPU clusters or expensive specialized hardware, only a few large operators could run them, introducing new centralization risks.
-
-To address this, ongoing work focuses on reducing both hardware and energy costs. The goal is to make provers small and efficient enough to run on modest clusters, and eventually even on consumer-grade machines such as powerful desktops or laptops. In the long term, this could allow individuals, small organizations, or community groups to participate in proving, supporting a more open and decentralized network.
-
 #### Decentralization and "Home Proving"
 
 Beyond speed, real-time proving has critical consequences for decentralization. If proof systems require massive GPU clusters or expensive specialized hardware, only a few large operators could run them, introducing new centralization risks.
