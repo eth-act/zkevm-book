@@ -30,7 +30,7 @@ Thus, real-time proving is an **absolute requirement** to replace re-execution a
 
 #### A Standardized Definition for L1
 
-To align the efforts of zkVM teams, the Ethereum Foundation has proposed a set of concrete targets that define real-time proving for L1 integration. These standards ensure that provers are not only fast but also secure, accessible, and practical.
+To align the efforts of zkVM teams, a [set of concrete targets](https://blog.ethereum.org/2025/07/10/realtime-proving) that define real-time proving for L1 integration has been recently proposed. These standards ensure that provers are not only fast but also secure, accessible, and practical.
 
   * **Latency:** A proof must be generated in **≤ 10 seconds** for 99% of mainnet blocks. This leaves a \~2-second buffer within the 12-second slot for network propagation.
   * **Security:** Proofs must provide at least **128 bits of security**. An initial 100-bit level may be acceptable temporarily, but 128 bits is the long-term goal.
@@ -68,8 +68,3 @@ To address this, the concept of **"home proving"** has become a key goal. This i
 * **On-prem Power Consumption:** ≤ 10 kW, a limit designed to fit within the power capacity of a standard residential home.
 
 The ultimate goal is to make provers small and efficient enough to run on modest clusters, and eventually even on consumer-grade machines such as powerful desktops or laptops. By making home proving feasible, the network can maintain a high degree of censorship resistance and decentralization, allowing individuals, small organizations, or community groups to participate in proving and supporting a more open and resilient network.
-
-
-#### Resources for Further Information
-
-- [Shipping an L1 zkEVM #1: Realtime Proving](https://blog.ethereum.org/2025/07/10/realtime-proving) by Sophia Gold
