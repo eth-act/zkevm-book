@@ -23,7 +23,7 @@ This Poly-IOP model is a perfect match for the **AIR arithmetization**:
 * The columns of the **execution trace** are interpolated into polynomials.
 * The **polynomial constraints** of the AIR become polynomial identities that must be proven (e.g., `A(x) + B(x) - C(x) = 0`).
 
-A Poly-IOP provides the formal steps to prove these identities. For instance, to check if two polynomials `P(x)` and `Q(x)` are identical, the verifier challenges the prover with a random point `r` from a large field and checks if `P(r) = Q(r)`. According to the **Schwartz-Zippel Lemma**, if the polynomials are different, this check will fail with overwhelming probability. STARK proof systems, for example, are fundamentally highly optimized Poly-IOPs.
+A Poly-IOP provides the formal steps to prove these identities. For instance, to check if two polynomials `P(x)` and `Q(x)` are identical, the verifier challenges the prover with a random point `r` from a large field and checks if `P(r) = Q(r)`. According to the **[Schwartz-Zippel Lemma](https://en.wikipedia.org/wiki/Schwartz%E2%80%93Zippel_lemma)**, if the polynomials are different, this check will fail with overwhelming probability. STARK proof systems, for example, are fundamentally highly optimized Poly-IOPs.
 
 The following figure is taken from [zk-SNARKs: A Gentle Introduction](https://www.di.ens.fr/~nitulesc/files/Survey-SNARKs.pdf) and illustrates the prover-verifier interaction in a PIOP:
 
