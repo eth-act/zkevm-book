@@ -8,7 +8,6 @@
   - [Incentives](./trees/external/incentives.md)
   - [Preconditions for Integrating zkEVMs](./trees/external/preconditions.md)
 - [Part II: zkVM Internals](./trees/internal/internals.md)
-  - [Cryptographic Prerequisites](./trees/internal/cryptobasics.md)
   - [Instruction Set Architecture](./trees/internal/isa.md)
   - [Arithmetization](./trees/internal/arithmetization.md)
   - [Information Theoretic Layer: IOPs and Poly-IOPs](./trees/internal/polyiops.md)
