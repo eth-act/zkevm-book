@@ -6,15 +6,3 @@
 - however, there are some shared core principles underlying their design, and we want to explain those briefly, and link to more detailed explanations of those
 - the goal is not that the reader learns exactly how a specific zkVM works, but rather that the reader gets a basic understanding (without much detail) of the basic concepts and can later dive deeper into details of a specific zkVM (which is not in the scope of this book)
 
-## Overview of Architectural Choices
-
-| Team | zkVM | ISA | SNARK system | SNARK plans | Dependencies |
-|------|------|-----|--------------|-------------|--------------|
-| Brevis | Pico | [rv32imc](https://github.com/brevis-network/pico/blob/cce23dc6fd6e9d63bfdb35365195955dd19da07d/vm/src/compiler/riscv/disassembler/elf.rs#L155) | [P3 lib](https://github.com/brevis-network/pico/blob/cce23dc6fd6e9d63bfdb35365195955dd19da07d/vm/Cargo.toml#L13) (and [gnark](https://github.com/brevis-network/pico/blob/cce23dc6fd6e9d63bfdb35365195955dd19da07d/gnark/README.md?plain=1#L1)?) | Upgrade? | |
-| Succinct | SP1 Hypercube | [rv32im (SP1)](https://github.com/succinctlabs/rust/blob/0a16dfe96c5e27ca87c82404127a2766dd4f1c11/src/doc/rustc/src/platform-support/riscv32im-risc0-zkvm-elf.md?plain=1#L70) | [P3 lib (SP1)](https://github.com/succinctlabs/sp1/blob/3b61ab03b2c94981575829eabed3dd87fda58a14/crates/stark/src/verifier.rs#L29) | | |
-| ZKM | Ziren | [mips32r2](https://github.com/ProjectZKM/Ziren/blob/5d29c119aff17fb030179559e497d40303608a70/README.md?plain=1#L26) | [P3 Lib](https://github.com/ProjectZKM/Ziren/blob/5d29c119aff17fb030179559e497d40303608a70/crates/prover/src/verify.rs) | | |
-| ZisK | ZisK | [rv64gc](https://github.com/0xPolygonHermez/rust/blob/d0f1c04fbfcb08c7da41d115da45140b059115ec/src/doc/rustc/src/platform-support/riscv64gc-unknown-linux-gnu.md?plain=1#L5) | [PIL2 Proofman Lib](https://github.com/0xPolygonHermez/pil2-proofman/blob/ff8c72a8837753d74a5d7b181d86f0ab05c73fc1/pil2-stark/src/starkpil/stark_verify.hpp#L22) | | |
-| MatterLabs | Airbender | [rv32im](https://github.com/matter-labs/risc_v_simulator) | [Custom](https://github.com/matter-labs/zksync-airbender/blob/5cb2fe8645f28d99b3ca910c04975aa1c7902e08/field/README.md?plain=1#L1) | | |
-| Axiom | OpenVM | [rv32im](https://github.com/openvm-org/openvm/blob/4973d38cb3f2e14ebdd59e03802e65bb657ee422/README.md?plain=1#L21) | [P3 Lib](https://github.com/openvm-org/stark-backend/blob/b0bec8739d249370f91862f99c2ecc2c03d33240/crates/stark-backend/src/verifier/mod.rs#L57) | | |
-| RISC Zero | R0VM | [rv32im](https://dev.risczero.com/api/zkvm/zkvm-specification) | [Custom](https://github.com/risc0/risc0/blob/8dfaac0a1daeda10e9aaf8db7d5ffad4f16880a8/risc0/zkp/src/verify/mod.rs#L485) | | |
-| a16z | Jolt | [rv32im](https://github.com/a16z/jolt/) ([more?](https://github.com/a16z/jolt/blob/e8c245607a4ab881f40713bae7cc4119dc117ae4/tracer/src/emulator/device/dts.dts#L48)) | [Custom](https://github.com/a16z/jolt/blob/42de0ca1f581dd212dda7ff44feee806556531d2/jolt-core/src/subprotocols/sparse_dense_shout.rs#L621) | | |
