@@ -1,6 +1,7 @@
 # Summary
 
 [Introduction](./introduction.md)
+
 - [Part I: zkEVMs in Ethereum](./trees/external/zkEVM-ethereum.md)
   - [zkEVM Interface](./trees/external/interface.md)
   - [Problems Addressed by zkEVMs](./trees/external/problemsaddressed.md)
@@ -19,3 +20,5 @@
   - [Clients](./trees/practical_guides/client.md)
   - [Process](./trees/practical_guides/process.md)
 - [Part IV: Current Status](./trees/status/status.md)
+
+[Other Resources](./other_resources.md)
