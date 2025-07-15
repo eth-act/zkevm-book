@@ -6,4 +6,4 @@
 - however, there are some shared core principles underlying their design, and we want to explain those briefly, and link to more detailed explanations of those
 - the goal is not that the reader learns exactly how a specific zkVM works, but rather that the reader gets a basic understanding (without much detail) of the basic concepts and can later dive deeper into details of a specific zkVM (which is not in the scope of this book)
 
-- we could reuse [this doc by Cody](https://linear.app/zkevm/document/zkevm-pipeline-322681ad89b4) here (or in an overview subsection)
+- we expand on [this doc by Cody](arch-table.md) here (or in an overview subsection)

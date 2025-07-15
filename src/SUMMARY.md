@@ -15,6 +15,7 @@
   - [Cryptographic Layer: Polynomial Commitments](./trees/internal/polycoms.md)
   - [Cryptographic Layer: BCS Transform](./trees/internal/bcs.md)
   - [Security Considerations](./trees/internal/security.md)
+  - [Architectural Choices](./trees/internal/arch-table.md)
 - [Part III: Practical Guides](./trees/practical_guides/practical_guides.md)
   - [Benchmarking](./trees/practical_guides/benchmarking.md)
   - [Clients](./trees/practical_guides/client.md)
