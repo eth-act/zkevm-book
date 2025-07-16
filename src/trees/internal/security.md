@@ -1,8 +1,8 @@
-## Security
+# Security Considerations
 
 Security is critical to the success of zkEVMs, especially as they move toward becoming part of Ethereum’s core infrastructure. To ensure a safe and resilient transition, the Ethereum community plans a phased rollout: zkEVM proving will be optional at first and become mandatory only once systems have been thoroughly vetted. Diversity is also a cornerstone of this approach—we aim to support multiple independent zkEVM clients so that if one encounters issues, others can continue to provide correct proofs. To guide this effort, there is a proposed set of [security guidelines](https://docs.google.com/document/d/1W6Y_JPxkt9D2P2sJe29FPOe8IuNiaPUvySpuzWcvnwk/edit?tab=t.0#heading=h.5vymhic1kh9x) rooted in best practices from the broader cryptography and software industries, helping projects design, implement, and evaluate zkEVMs with robustness in mind.
 
-### Understanding Knowledge Soundness
+## Understanding Knowledge Soundness
 
 The goal of a zkEVM is to ensure that when someone claims they executed some EVM bytecode, they really did. That is, if a proof says “this transaction was processed correctly,” we should be confident that the prover *knows* how that transaction was executed. This property is called **knowledge soundness**, and it’s what prevents malicious provers from fabricating proofs out of thin air.
 
@@ -26,7 +26,7 @@ The last step is to eliminate interaction entirely. We do this using the **Fiat-
 Putting it all together: the early layers of the zkEVM stack provide strong, ideal-world guarantees. The later layers compile those guarantees into something practical and succinct, grounded in well-studied cryptographic assumptions. If each layer is carefully constructed, we get a system where every accepted proof genuinely reflects a valid execution—succinctly, securely, and efficiently.
 
 
-### Knowledge Soundness in the Literature
+## Knowledge Soundness in the Literature
 
 The above structure for building knowledge-sound zkEVMs appears across many modern proof systems.
 
@@ -49,7 +49,7 @@ To put this in context, [NIST’s guidelines on key management](https://nvlpubs.
 
 For a concrete sense of what’s computationally feasible, consider Bitcoin mining. As of 2025, the most difficult known Bitcoin block ([Block 756951](https://blockchair.com/bitcoin/block/756951)) had a hash with 97 leading zero bits. Statistically, achieving such a result requires around $2^{97}$ SHA-256 evaluations. This gives a tangible measure of the scale of effort possible with globally distributed hashpower.
 
-### Measuring Bit Security in zkEVMs
+## Measuring Bit Security in zkEVMs
 
 Assessing the bit security of a zkEVM means understanding how soundness can degrade through each layer of the system. Even if individual components are secure, the overall system may be weaker when composed. Key contributors include:
 
@@ -67,7 +67,7 @@ Assessing the bit security of a zkEVM means understanding how soundness can degr
 
 In practice, the total bit security of a zkEVM is limited by **its weakest link**. Even if most components offer 128-bit security, a single step with only 110 bits of assurance could lower the system’s effective strength. Because of this, security analysis should account for all components, their assumptions, and how they compose.
 
-### Specification and Formal Verification
+## Specification and Formal Verification
 
 For zkEVMs to be secure, two things must hold: the cryptographic **security proof must be correct**, and the **implementation must match the scheme that was proven secure**. These are both difficult to guarantee in practice. For example, a [critical flaw](https://github.com/Plonky3/Plonky3/security/advisories/GHSA-f69f-5fx9-w9r9) was recently discovered in the Plonky3 FRI verifier—despite the underlying theory being sound. One of the most useful tools for bridging this gap is a **written specification**. A good specification is the foundation for both verification and auditing.
 
@@ -83,7 +83,7 @@ The Ethereum Foundation is currently leading the [Verified ZK-EVM](https://verif
 
 Formal methods are widely used in high-stakes engineering: from aircraft control software, to CPU instruction set verification, to operating system kernels. zkEVMs, which aim to secure smart contract execution on Ethereum’s base layer, face similar stakes. On this topic, the following [xkcd](https://xkcd.com/2030/) seems highly relevant.
 
-### Conclusion
+## Security Conclusions
 
 As zkEVMs mature from experimental prototypes into core components of Ethereum’s infrastructure, security must be treated as a first-class concern. Achieving this requires more than just strong cryptographic building blocks—it also demands rigorous security proofs, clear specifications, careful engineering, and a realistic understanding of what can go wrong when these pieces are composed.
 
