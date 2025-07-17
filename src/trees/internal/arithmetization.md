@@ -171,3 +171,4 @@ AIR’s tight alignment with machine semantics, support for high-degree constrai
 - [Arithmetization in STARKs an Intro to AIR](https://threesigma.xyz/blog/zk/arithmetization-starks-algebraic-intermediate-representation)
 - [Quadratic Arithmetic Programs: from Zero to Hero](https://medium.com/@VitalikButerin/quadratic-arithmetic-programs-from-zero-to-hero-f6d558cea649)
 - [Proving AIRs with multivariate sumchecks](https://solvable.group/posts/air-multivariate-sumcheck/)
+- [The Elegant Foundation: Plonkish Arithmetization](https://www.bigsky.gg/posts/mina_3/)
