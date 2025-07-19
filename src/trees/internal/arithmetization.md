@@ -122,12 +122,12 @@ AIR is the native arithmetization scheme used by STARK-based zkVMs. Rather than 
 
 #### How AIR Works:
 
-1. **Trace Polynomials**:
-   Each column of the execution trace is interpolated into a univariate polynomial \\(P_i(x)\\) over a finite field. The input trace becomes a vector of polynomials:
+1.  **Trace Polynomials**:
+    Each column of the execution trace is interpolated into a univariate polynomial \\(P_i(x)\\). This interpolation is performed over a specific subset of the finite field called the **evaluation domain**. To make the math efficient, this domain is chosen to be a *cyclic multiplicative subgroup*, which means it has a **generator** \\(g\\) whose powers (e.g., \\(g^0, g^1, g^2, \ldots\\)) can produce every element in the domain. The input trace thus becomes a vector of polynomials:
 
-   $$
-   P_0(x), P_1(x), \ldots, P_{w-1}(x)
-   $$
+    $$
+    P_0(x), P_1(x), \ldots, P_{w-1}(x)
+    $$
 
 2. **Polynomial Constraints**:
    Transition and boundary constraints are expressed as polynomial identities involving shifted evaluations. For instance, the rule
@@ -152,23 +152,23 @@ AIR is the native arithmetization scheme used by STARK-based zkVMs. Rather than 
 
     In this way, a complete set of polynomial constraints collectively describes the behavior of every possible instruction, ensuring the entire program execution is valid.
 
-3. **Quotient Argument**:
-   To check that a constraint polynomial \\(C(x)\\) is zero on a domain \\(D\\), the prover constructs the vanishing polynomial \\(V_D(x)\\) (which is zero on all \\(x \in D\\)), and computes:
+3.  **Quotient Argument**:
+    To prove that each constraint polynomial \\(C(x)\\) is zero on its specific enforcement domain \\(D\\), the prover uses an algebraic argument. They construct the vanishing polynomial \\(V_D(x)\\) (which by definition is zero on all \\(x \in D\\)) and compute the quotient:
 
-   $$
-   Q(x) = \frac{C(x)}{V_D(x)}
-   $$
+    $$
+    Q(x) = \frac{C(x)}{V_D(x)}
+    $$
 
-   If \\(C(x)\\) vanishes over \\(D\\), then \\(Q(x)\\) is a valid low-degree polynomial. If not, the division fails, exposing invalid behavior.
+    If \\(C(x)\\) correctly vanishes over \\(D\\), then the division is clean and \\(Q(x)\\) is a valid low-degree polynomial. If not, the division would result in a rational function (not a polynomial), and the prover's dishonesty would be revealed. This process transforms the set of original constraint claims into an equivalent set of claims that each \\(Q_i(x)\\) is a valid polynomial.
 
-4. **Composition Polynomial**:
-   All constraints are merged into one polynomial using random coefficients provided by the verifier:
+4.  **Composition Polynomial**:
+    Instead of testing each individual quotient polynomial \\(Q_i(x)\\) for being low-degree (which would be inefficient), they are all merged into a single polynomial using random coefficients \\(\alpha_i\\) provided by the verifier:
 
-   $$
-   C_{\text{comp}}(x) = \sum_i \alpha_i \cdot Q_i(x)
-   $$
+    $$
+    C_{\text{comp}}(x) = \sum_i \alpha_i \cdot Q_i(x)
+    $$
 
-   This single composition polynomial is then tested for low-degree proximity using FRI or similar protocols.
+    This single, randomly-combined composition polynomial is what the proof system ultimately tests. If this final polynomial is low-degree, it implies with very high probability that all the individual quotient polynomials were also low-degree, and thus all the original constraints were satisfied. This polynomial is then passed to a protocol like FRI for a final low-degree test.
 
 > **Note on Multilinear Polynomials**: While treating each column as a separate univariate polynomial is common, more modern AIR-based systems can view the entire execution trace as a single multilinear polynomial. As described in recent work on [Jagged Polynomial Commitments](https://eprint.iacr.org/2025/917), this approach allows the system to commit to the entire trace as one object, which can drastically reduce the verification cost and prover overhead associated with managing many individual column commitments.
 
