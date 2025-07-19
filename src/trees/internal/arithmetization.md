@@ -12,7 +12,11 @@ At the heart of arithmetizing a machine's computation are two key components: th
 
 The first step is to record the computation's every move. This record is called the **execution trace**. Conceptually, it's a table where each row represents the complete state of the virtual machine at a single point in time (a clock cycle), and each column represents a specific register or memory cell tracked over time.
 
-For example, a simple computation that calculates a Fibonacci sequence would have a trace with one column. Each row `n` would contain the `n`-th Fibonacci number, representing the state at each step. This entire table is the *witness* that the prover wants to convince the verifier is correct.
+For example, a simple computation that calculates a Fibonacci sequence would have a trace with one column, where each row `n` contains the `n`-th Fibonacci number. This detailed table is the **execution trace**.
+
+To understand why this trace is also called the **witness**, it helps to step back and look at the general cryptographic meaning of the term. A witness is the secret data that a prover possesses that makes a public statement true. For a zkVM, the public statement might be *"running this program with public input `x` results in public output `y`"*. The witness is the answer to the question *"how?"*. It's the complete set of intermediate variables and secret values that demonstrate the computation's validity from start to finish.
+
+Therefore, the execution trace (as a complete, step-by-step record of the machine's internal state) is the concrete form this witness takes for a program's execution. It is the core evidence the prover will use to construct the proof.
 
 | Clock Cycle (Row) | Register 0 (Column) |
 | :---------------- | :------------------ |
@@ -139,6 +143,14 @@ AIR is the native arithmetization scheme used by STARK-based zkVMs. Rather than 
    $$
 
    where \\(g\\) is a generator of the evaluation domain, representing a one-step shift in time.
+
+   To connect this to a real zkVM, imagine the trace has columns for the current instruction's opcode and various machine registers. The polynomial constraints are responsible for enforcing the entire CPU instruction set. For instance:
+
+    * **Instruction Logic**: For a row where the opcode is `ADD`, a constraint enforces that the values from two source register columns sum to the value in the destination register column. This is often written conditionally, like $$\text{is_add_opcode} \cdot (P_{dest} - (P_{source1} + P_{source2})) = 0,$$ so the constraint only applies when the `ADD` instruction is active.
+
+    * **Program Counter (PC)**: The PC register, which points to the next instruction, is also constrained. For most rows, the constraint is $$P_{PC}(g \cdot x) - (P_{PC}(x) + 1) = 0,$$ ensuring it simply increments. For a `JUMP` instruction, however, the constraint would change to enforce that the next PC value matches the jump destination specified in the instruction.
+
+    In this way, a complete set of polynomial constraints collectively describes the behavior of every possible instruction, ensuring the entire program execution is valid.
 
 3. **Quotient Argument**:
    To check that a constraint polynomial \\(C(x)\\) is zero on a domain \\(D\\), the prover constructs the vanishing polynomial \\(V_D(x)\\) (which is zero on all \\(x \in D\\)), and computes:
