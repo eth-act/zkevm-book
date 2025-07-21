@@ -30,9 +30,9 @@ Putting it all together: the early layers of the zkEVM stack provide strong, ide
 
 The above structure for building knowledge-sound zkEVMs appears across many modern proof systems.
 
-* [**Marlin**](https://eprint.iacr.org/2019/1047) builds an IOP for the Rank-1 Constraint System (R1CS) and compiles it into a SNARK using the KZG polynomial commitment scheme. Knowledge soundness in Marlin depends on the extractability of KZG and the security of the Fiat-Shamir transform in the Random Oracle Model.
+* [**Marlin**](https://eprint.iacr.org/2019/1047) builds a Poly-IOP for the Rank-1 Constraint System (R1CS) and compiles it into a SNARK using the KZG polynomial commitment scheme. Knowledge soundness in Marlin depends on the extractability of KZG and the security of the Fiat-Shamir transform in the Random Oracle Model.
 
-* [**Binius**](https://eprint.iacr.org/2023/1784) constructs a multilinear polynomial commitment scheme suitable for polynomials over very small fields, including the binary field. They apply their PCS to a binary variant of the Plonkish constraint system, enabling efficient proof systems even in tiny fields.
+* [**Binius**](https://eprint.iacr.org/2023/1784) constructs a multilinear polynomial commitment scheme suitable for polynomials over binary fields. They apply their PCS to a binary variant of the Plonkish constraint system, enabling efficient proof systems even in tiny fields.
 
 * [**WHIR**](https://eprint.iacr.org/2024/1586.pdf), [**BaseFold**](https://eprint.iacr.org/2023/1705), and [**FRI**](https://eccc.weizmann.ac.il/report/2017/134/) construct IOPs of proximity, which are used to verify that a function is *close* to one satisfying a set of algebraic constraints. These protocols form the basis for building prover-efficient polynomial commitment schemes, often used in STARKs.
 
@@ -53,11 +53,11 @@ For a concrete sense of what’s computationally feasible, consider Bitcoin mini
 
 Assessing the bit security of a zkEVM means understanding how soundness can degrade through each layer of the system. Even if individual components are secure, the overall system may be weaker when composed. Key contributors include:
 
-- **Challenge soundness in the IOP**  
+- **Challenge soundness in the Poly-IOP**  
   The verifier sends random challenges to the prover. If these are predictable or repeatable, an adversary may get “lucky” and bypass detection. Bit security here depends on the size of the field the challenges are sampled from.
 
 - **Polynomial commitment scheme (PCS)**  
-  Most zkEVMs rely on polynomial commitments to compile their IOP into a SNARK. The bit security of the system is bounded by the hardness of opening a commitment inconsistently. 
+  Most zkEVMs rely on polynomial commitments to compile their Poly-IOP into a SNARK. The bit security of the system is bounded by the hardness of opening a commitment inconsistently. 
 
 - **Hash function assumptions (Fiat-Shamir)**  
   The Fiat-Shamir transform replaces verifier randomness with hash outputs. Soundness here assumes the hash behaves like a **random oracle**, which is a heuristic assumption. Bit security is typically estimated from the preimage or collision resistance of the hash function, though it's often slightly weaker in practice due to modeling gaps.
