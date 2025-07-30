@@ -15,16 +15,16 @@ Note that in the designs below, we assume that proofs are stored [off-chain](htt
 ### Same Slot Proving under Delayed Execution
 - Slot `n`, `t=0`: The builder of slot `n` propagates the block, which includes the beacon block and execution payload, and its blobs.
 - Slot `n`, `t=1.5`: Attesters statically validate the beacon block.
-- Slot `n`, `t=10` (Proof Deadline): Attesters freeze their view of available proofs.
-- Slot `n+1`, `t=0`: The builder of slot `n+1` indicates whether the proofs were timely with a flag in the block.
-- Slot `n+1`, `t=1.5`: If attesters saw a valid proof by the proof deadline, but the builder indicated otherwise, they do not vote for block.
+- Slot `n`, `t=10` (Proof Deadline): Attesters freeze their view of available proofs. Provers must have propagated their proofs before this deadline.
+- Slot `n+1`, `t=0`: The builder of slot `n+1` indicates whether the proofs were valid and timely with a flag in the block.
+- Slot `n+1`, `t=1.5`: Attesters verify the proofs. If attesters saw a valid proof by the proof deadline, but the builder indicated otherwise, they do not vote for block.
 
 ### Same Slot Proving under ePBS
 With ePBS, the beacon block and execution payload are separate objects sent by the beacon proposer and the builder respectively. A proof is necessary for the execution payload. No proof is required for the beacon block. With ePBS, there is no timeliness flag necessary for the proofs of the previous block since a beacon proposer does not build on a late execution payload. Therefore, building on an execution payload is an implicit flag of proof timeliness.
 
 - Slot `n`, `t=0`: The beacon proposer of slot `n` propagates a beacon block that commits to an execution payload hash.
 - Slot `n`, `t=1.5`: Attesters vote for the beacon block.
-- Slot `n`, `t=10`: The [Payload-Timeliness Committee (PTC)](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054#proposer-initiated-splitting-18) votes for the availability of the execution payload, the blobs, and the proof.
-- Slot `n+1`, `t=0`: The beacon proposer of slot `n+1` builds on the beacon block and execution payload of slot `n` if both were available.
-- Slot `n+1`, `t=1.5`: If the PTC voted for the availability of all necessary objects, attesters only vote for the beacon block of slot `n+1` if it builds on the beacon block and execution payload of slot `n`.
+- Slot `n`, `t=10`: The [Payload-Timeliness Committee (PTC)](https://ethresear.ch/t/payload-timeliness-committee-ptc-an-epbs-design/16054#proposer-initiated-splitting-18) votes for the availability of the execution payload, the blobs, and the proof. Provers must have propagated their proofs before this deadline.
+- Slot `n+1`, `t=0`: The beacon proposer of slot `n+1` builds on the beacon block and execution payload of slot `n` if both were available, and there is a valid proof for the execution payload.
+- Slot `n+1`, `t=1.5`: Attesters verify the proofs. If the PTC voted for the availability of all necessary objects, attesters only vote for the beacon block of slot `n+1` if it builds on the beacon block and execution payload of slot `n`.
 
