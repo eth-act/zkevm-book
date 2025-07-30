@@ -13,7 +13,7 @@ A block must be proven within the slot it is proposed. A [proposed slot architec
 Note that in the designs below, we assume that proofs are stored [off-chain](https://ethresear.ch/t/native-rollups-superpowers-from-l1-execution/21517), however, the design could easily be changed to include proofs onchain. The roles of the beacon proposer and the builder stay very similar with zkEVMs as they are today. The differences are that a beacon proposer may have to include a flag indicating availability of proofs. Builders are responsible for sourcing proofs from provers. The new important role is a prover: the party that proves a block with a particular proving system.
 
 ### Same Slot Proving under Delayed Execution
-- Slot `n`, `t=0`: The builder of slot `n` propagates the block, which includes the beacon block and execution payload, and its blobs.
+- Slot `n`, `t=0`: The builder of slot `n` propagates the block (including the beacon block and execution payload) and its blobs.
 - Slot `n`, `t=1.5`: Attesters statically validate the beacon block.
 - Slot `n`, `t=10` (Proof Deadline): Attesters freeze their view of available proofs. Provers must have propagated their proofs before this deadline.
 - Slot `n+1`, `t=0`: The builder of slot `n+1` indicates whether the proofs were valid and timely with a flag in the block.
