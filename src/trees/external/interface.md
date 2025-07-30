@@ -65,7 +65,7 @@ As common in cryptography, we define soundness via a probabilistic experiment (a
 The experiment for soundness is as follows:
 1. `Adv` receives the system parameters, e.g., descriptions of hash functions that are involved.
 2. `Adv` can do some computation and then output a claim and a proof, given by `f, x, y, proof`.
-3. `Adv` *wins the game*, if *f(x) != y* (the claim is false) but `Verify(vk, x, y, proof) == 1`.
+3. `Adv` *wins the game*, if `f(x) != y` (the claim is false) but `Verify(vk, x, y, proof) == 1`.
 
 That is, an adversary breaks soundness and wins the game, if it can come up with a false claim accompanied by a verifying proof, i.e., if it can fool the verifier.
 Now, we say that a zkEVM is *sound*, if every *efficient* adversary has a negligible probability of winning in this game.
