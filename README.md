@@ -28,4 +28,4 @@ To build and read this book locally:
 The book will open in your default web browser at `http://localhost:3000`.
 
 ### License
-MIT License.
+Dual License: APACHE + MIT
