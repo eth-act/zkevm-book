@@ -31,11 +31,13 @@ The book will open in your default web browser at `http://localhost:3000`.
 
 We welcome comments, pull requests, and contributions.
 Be aware that the focus of the book is:
+
 - to explain what zkVMs are
 - to explain which problems they solve in Ethereum
 - to explain how they would be used in Ethereum
 
 The focus of the book is not:
+
 - to explain every detail of a specific zkVM
 - to explain the cryptographic concepts in full detail -- there is enough literature for that
 
