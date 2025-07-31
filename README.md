@@ -39,7 +39,7 @@ Be aware that the focus of the book is:
 The focus of the book is not:
 
 - to explain every detail of a specific zkVM
-- to explain the cryptographic concepts in full detail -- there is enough literature for that
+- to explain the cryptographic concepts in full detail
 
 Also, don't use this to open controversial discussions about the future of Ethereum.
 
