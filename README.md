@@ -45,4 +45,4 @@ Also, don't use this to open controversial discussions about the future of Ether
 
 ## License
 
-Dual License: APACHE + MIT
+Dual License: APACHE + MIT.
