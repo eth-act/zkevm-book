@@ -28,6 +28,7 @@ To build and read this book locally:
 The book will open in your default web browser at `http://localhost:3000`.
 
 ## Contributing
+
 We welcome comments, pull requests, and contributions.
 Be aware that the focus of the book is:
 - to explain what zkVMs are
