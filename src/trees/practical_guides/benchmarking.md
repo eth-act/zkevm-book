@@ -15,7 +15,7 @@ To answer these questions, we can’t take a theoretical approach with napkin ma
 
 Moreover, there are many practical aspects that we need to consider:
 
-- We’re early in the process of deciding which are the top 5 best-performing and mature zkVM implementations — we need a quick way to evaluate all existing and easily introduce new options.
+- We’re early in the process of deciding which are the best-performing and mature zkVM implementations — we need a quick way to evaluate all existing and easily introduce new options.
 - Each zkVM implementation is moving at a fast pace, so it is mandatory to understand their performance improvements and quickly catch potential regressions.
 - Depending on the performance of each zkVM, we can envision trying to pair less optimized EL guest programs with more optimized zkVMs to have a balanced suite of combinations for having the most reliability.
 
