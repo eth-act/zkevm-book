@@ -7,7 +7,7 @@ When considering using zero-knowledge technology at the L1 of Ethereum, it is re
 When introducing a new technology or a big protocol change in Ethereum, we need to understand the implications on multiple fronts, for example:
 
 - Does it fit the [desired hardware specs](https://blog.ethereum.org/2025/07/10/realtime-proving) for the node types that will be involved?
-- How can actors in the network (e.g., provers) understand how different hardware configurations behave? (e.g., GPU models’ power efficiency).
+- How can actors in the network (e.g. provers) understand how different hardware configurations behave? (e.g. GPU models’ power efficiency).
 - What new risks are introduced regarding liveness and security?
 - Are there any blockers to using this technology? (i.e., non-obvious protocol changes)
 
