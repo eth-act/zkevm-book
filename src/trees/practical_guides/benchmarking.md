@@ -9,9 +9,9 @@ When introducing a new technology or a big protocol change in Ethereum, we need 
 - Does it fit the [desired hardware specs](https://blog.ethereum.org/2025/07/10/realtime-proving) for the node types that will be involved?
 - How can actors in the network (e.g. provers) understand how different hardware configurations behave? (e.g. GPU models’ power efficiency).
 - What new risks are introduced regarding liveness and security?
-- Are there any blockers to using this technology? (i.e., non-obvious protocol changes)
+- Are there any blockers to using this technology? (i.e. non-obvious protocol changes)
 
-To answer these questions, we can’t take a theoretical approach with napkin math, since usually the answer depends on many engineering dimensions of the solutions, e.g., how optimized are the implementations, unexpected limitations compared to theoretical possibilities, maturity, etc. Said differently, (some) devils might be in the details.
+To answer these questions, we can’t take a theoretical approach with napkin math, since usually the answer depends on many engineering dimensions of the solutions, e.g. how optimized are the implementations, unexpected limitations compared to theoretical possibilities, maturity, etc. Said differently, (some) devils might be in the details.
 
 Moreover, there are many practical aspects that we need to consider:
 
@@ -27,14 +27,14 @@ Finally, this effort wouldn’t only help Ethereum core developers to evaluate a
 
 # How?
 
-zkVMs are general constructions to prove generic programs that can be compiled to any ISA supported by them. This means that the Ethereum use-case is a subset of programs that they support proving. We are not interested in doing general zkVM benchmarking, but focusing on Ethereum block validation (i.e., benchmarking a program calculating the Fibonacci sequence isn’t interesting).
+zkVMs are general constructions to prove generic programs that can be compiled to any ISA supported by them. This means that the Ethereum use-case is a subset of programs that they support proving. We are not interested in doing general zkVM benchmarking, but focusing on Ethereum block validation (i.e. benchmarking a program calculating the Fibonacci sequence isn’t interesting).
 
 zkVM benchmarking for Ethereum means putting at the center fixtures that represent any valid block that can happen in the protocol, which we can separate into two main buckets:
 
 - Average cases: these cases can be represented by mainnet blocks — this can help understand the performance in the average cases.
 - Worst cases: these cases cover very rare cases that naturally happen in mainnet, or specifically designed blocks by attackers to affect the chain's liveness. A common term to describe them is *prover killers*.
 
-Understanding both cases is crucial to evaluate potential protocol design changes (e.g., gas cost models or incentives).
+Understanding both cases is crucial to evaluate potential protocol design changes (e.g. gas cost models or incentives).
 
 Benchmarking different zkVMs can become a hot topic since it directly puts different zkVMs face-to-face. These teams work incredibly hard to provide the best version of their design, so it’s important to be responsible in doing a fair comparison. For this reason, the benchmarking pipeline should be transparent and also easily reproducible.
 
@@ -42,7 +42,7 @@ Benchmarking different zkVMs can become a hot topic since it directly puts diffe
 
 At the center of zkVM benchmarking is designing the cases that we should run in the zkVM and EL client combinations — we call this benchmark fixtures. To do a meaningful design of which fixtures are run, we need to understand the full protocol in detail, so as to have enough coverage of relevant ones to benchmark.
 
-Before jumping into deeper details, it is helpful to understand what exactly is being proven by zkVMs for the Ethereum use-case. The guest program execution is an EL client executing a stateless block validation. This means receiving as inputs a block plus a witness with the required Ethereum state, and executing the block to check if the post-state root, gas usage, and other fields are valid (i.e., that the state transition function was correct).
+Before jumping into deeper details, it is helpful to understand what exactly is being proven by zkVMs for the Ethereum use-case. The guest program execution is an EL client executing a stateless block validation. This means receiving as inputs a block plus a witness with the required Ethereum state, and executing the block to check if the post-state root, gas usage, and other fields are valid (i.e. that the state transition function was correct).
 
 When a block is executed, we can separate the workload into two main buckets:
 
@@ -62,19 +62,19 @@ At the start of 2025, core developers started working on a big project to includ
 
 # Tools
 
-The zkEVM team within the EF has been working on a specific set of libraries and tools to support this initiative. The two main ones are [ere](https://github.com/eth-act/ere) and [zkevm-benchmark-workload](https://github.com/eth-act/zkevm-benchmark-workload). The former is a Rust library that provides a single API to run guest programs in many zkVMs. This allows us to abstract many of the complexities of running guest programs. The latter is a tool that uses ere, specifically designed to run Ethereum fixtures for benchmarking, e.g., run EEST benchmarks, mainnet blocks, and experimental programs.
+The zkEVM team within the EF has been working on a specific set of libraries and tools to support this initiative. The two main ones are [ere](https://github.com/eth-act/ere) and [zkevm-benchmark-workload](https://github.com/eth-act/zkevm-benchmark-workload). The former is a Rust library that provides a single API to run guest programs in many zkVMs. This allows us to abstract many of the complexities of running guest programs. The latter is a tool that uses ere, specifically designed to run Ethereum fixtures for benchmarking, e.g. run EEST benchmarks, mainnet blocks, and experimental programs.
 
 We won’t go into full detail in this chapter on how to use these tools since both have extensive documentation in the repository. Anyone is invited to use these libraries and tools and collaborate on making them better. For example, new zkVMs can integrate into ere and immediately have a complete toolset to benchmark how Ethereum would behave in them.
 
 The strategy used in this style of benchmarking is running real mainnet blocks, specifically crafted to target known potential attacks, or using all the gas limit in a single opcode or precompile, each under a different scenario. For example, `SSTORE` and `SLOAD` can generate different workloads if they access hot and cold data, or the `modexp` precompile underlying implementation can be sensitive to particular inputs.
 
-When the benchmarking fixture is targeting a block that uses all the gas limit for some pure computation opcode (e.g., `ADD`, `MUL`, `MULMOD`, etc), the overhead of pre/post block processing compared to the main block execution should be very low, and is amortized the bigger the gas limit. Note that some opcodes, like `SSTORE`, `SSLOAD`, `EXTCODESIZE` involve accessing state, thus including the pre/post block workload of reading/verifying and writing into the state tree must be considered part of the benchmark run.
+When the benchmarking fixture is targeting a block that uses all the gas limit for some pure computation opcode (e.g. `ADD`, `MUL`, `MULMOD`, etc), the overhead of pre/post block processing compared to the main block execution should be very low, and is amortized the bigger the gas limit. Note that some opcodes, like `SSTORE`, `SSLOAD`, `EXTCODESIZE` involve accessing state, thus including the pre/post block workload of reading/verifying and writing into the state tree must be considered part of the benchmark run.
 
 It is also possible (and might be desirable for some reasons) to fully isolate some particular opcodes or precompiles by only benchmarking isolated EVM opcodes implementations, but this strategy can end up being too focused on a specific implementation compared to having a shared setup that we can run in all EL EVMs. Also, if we extract the cycles/cost of proving an empty block, we can get close to a very fair take on which opcodes or precompiles can be mispriced or problematic, at least in a relevant order of magnitude. Again, this other strategy shouldn’t be discarded, and both can be complementary.
 
 ## Results
 
-The EF zkEVM team is currently running the fixtures and collecting the results. Many parts of the stack are still changing at a fast pace (e.g., guest program optimizations, zkVM SDKs, etc). If you want to track early run results, they are being uploaded to [this repository](https://github.com/eth-act/zkevm-benchmark-runs). Other websites, like Ethproofs, are planning on presenting results about worst cases using the same tooling and benchmark fixtures — so stay tuned.
+The EF zkEVM team is currently running the fixtures and collecting the results. Many parts of the stack are still changing at a fast pace (e.g. guest program optimizations, zkVM SDKs, etc). If you want to track early run results, they are being uploaded to [this repository](https://github.com/eth-act/zkevm-benchmark-runs). Other websites, like Ethproofs, are planning on presenting results about worst cases using the same tooling and benchmark fixtures — so stay tuned.
 
 ## External resources
 
