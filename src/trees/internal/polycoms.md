@@ -41,6 +41,8 @@ To prove an opening, the prover runs the FRI protocol on the evaluations of \\(Q
 
 This recursive, hash-based strategy is powerful. While other schemes exist, such as **KZG**, which uses elliptic curve pairings to achieve constant-sized proofs at the cost of a trusted setup, the transparency and minimal assumptions of FRI have made it a dominant approach for building scalable and secure zkVMs.
 
+This foundation is rapidly being built upon. Protocols like [**STIR**](https://eprint.iacr.org/2024/090) optimize FRI by recursively improving the underlying code's rate, which reduces the number of queries needed and results in significantly smaller proofs. A more fundamental evolution is [**WHIR**](https://eprint.iacr.org/2024/1675), which integrates a lightweight **sumcheck** protocol directly into its folding recursion. This architectural shift enables native support for multilinear polynomials, leading to asymptotically fewer queries and exceptionally fast verification times, making hash-based proofs even more practical for the future of Ethereum.
+
 ### Further Reading/Listening
 * [**Intro to FRI: RISC Zero Study Club**](https://www.youtube.com/watch?v=j35yz22OVGE): An intuitive explanation of FRI in video format.
 * [**Anatomy of a STARK, Part 3: FRI**](https://aszepieniec.github.io/stark-anatomy/fri.html): An excellent deep dive into the mechanics and intuition of the protocol.
