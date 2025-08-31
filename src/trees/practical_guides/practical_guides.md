@@ -2,17 +2,15 @@
 
 This section provides hands-on guidance for different audiences interested in working with zkEVMs. Whether you're a blockchain developer, a client implementer, or a researcher, you'll find practical information to help you get started with zkEVM technology.
 
-
-
-Zero-knowledge Ethereum Virtual Machines (zkEVMs) represent one of the most promising scaling solutions for Ethereum. This section will guide you through the practical aspects of working with zkEVMs, from setting up your environment to deploying and testing applications.
+This section will guide you through the practical aspects of working with zkEVMs, from setting up your environment to deploying and testing applications.
 
 ### Getting Started with ERE
 
-[ERE](https://github.com/eth-act/ere) is a powerful unified zkVM interface and toolkit that allows developers to work with multiple zero-knowledge virtual machines through a consistent API. ERE simplifies the process of compiling, executing, proving, and verifying programs across different zkVM implementations.
+[ERE](https://github.com/eth-act/ere) is a powerful unified zkVM interface and toolkit that allows developers to work with multiple zkVMs through a consistent API. ERE simplifies the process of compiling, executing, proving, and verifying programs across different zkVM implementations.
 
 ### What is ERE?
 
-ERE provides a unified Rust API that works across multiple zkVM backends, including SP1, OpenVM, Risc Zero, Jolt, Pico, Zisk, and Nexus. This abstraction layer allows developers to:
+ERE provides a unified Rust API that works across multiple zkVM backends. This abstraction layer allows developers to:
 
 - Switch between different zkVM implementations with minimal code changes
 - Use a consistent API for compiling, executing, proving, and verifying
@@ -152,7 +150,7 @@ While you can use the ERE library directly to build custom solutions, the Ethere
 
 By using these tools, client developers can systematically benchmark how their client performs as a guest program inside different zkVMs. This work is critical for identifying performance bottlenecks, analyzing security implications, and providing concrete data to guide optimizations in both the EL clients and the zkVMs themselves.
 
-Here is what an example guest program for stateless block verification for the SP1 zkVM looks like;
+Here is what an example guest program for stateless block verification for the SP1 zkVM looks like:
 
 ```rust 
 //! SP1 guest program
