@@ -169,9 +169,6 @@ use tracing_subscriber::fmt;
 sp1_zkvm::entrypoint!(main);
 /// Entry point.
 pub fn main() {
-    init_tracing_just_like_println();
-
-    println!("cycle-tracker-report-start: read_input");
     let input = sp1_zkvm::io::read::<StatelessInput>();
     let genesis = Genesis {
         config: input.chain_config.clone(),
@@ -179,9 +176,7 @@ pub fn main() {
     };
     let chain_spec: Arc<ChainSpec> = Arc::new(genesis.into());
     let evm_config = EthEvmConfig::new(chain_spec.clone());
-    println!("cycle-tracker-report-end: read_input");
 
-    println!("cycle-tracker-report-start: validation");
     stateless_validation_with_trie::<SparseState, _, _>(
         input.block,
         input.witness,
@@ -189,32 +184,15 @@ pub fn main() {
         evm_config,
     )
     .unwrap();
-    println!("cycle-tracker-report-end: validation");
 }
-
-/// Initializes a basic `tracing` subscriber that mimics `println!` behavior.
-///
-/// This is because we want to use tracing in the `no_std` program to capture cycle counts.
-fn init_tracing_just_like_println() {
-    // Build a formatter that prints *only* the message text + '\n'
-    let plain = fmt::format()
-        .without_time() // no timestamp
-        .with_level(false) // no INFO/TRACE prefix
-        .with_target(false); // no module path
-
-    fmt::Subscriber::builder()
-        .event_format(plain) // use the stripped-down format
-        .with_writer(std::io::stdout) // stdout == println!
-        .with_max_level(tracing::Level::INFO) // capture info! and up
-        .init(); // set as global default
-}
-
 ```
+
+_note: this code would change with time as it is under active development. Refer to this [link](https://github.com/eth-act/zkevm-benchmark-workload/blob/master/ere-guests/stateless-validator/sp1/src/main.rs) for updated implementations._
 
 The tools and techniques outlined here are not just for experimentation; they are the essential building blocks for the future of Ethereum scaling and verifiable computation. We encourage you to build upon these examples, explore the different zkVM backends, and contribute to the ongoing effort to create a more scalable and secure decentralized world.
 
 
 #### Resources
-https://github.com/eth-act/ere
-https://github.com/eth-act/zkevm-benchmark-workload
-https://github.com/eth-act/zkevm-benchmark-workload/blob/master/ere-guests/stateless-validator/sp1/src/main.rs
+- https://github.com/eth-act/ere
+- https://github.com/eth-act/zkevm-benchmark-workload
+- https://github.com/eth-act/zkevm-benchmark-workload/blob/master/ere-guests/stateless-validator/sp1/src/main.rs
