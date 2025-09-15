@@ -17,6 +17,7 @@
   - [Security Considerations](./trees/internal/security.md)
   - [Architectural Choices](./trees/internal/arch-table.md)
 - [Part III: Practical Guides](./trees/practical_guides/practical_guides.md)
+  - [Compilation pipeline](./trees/practical_guides/guest_program_compilation.md)
   - [Benchmarking](./trees/practical_guides/benchmarking.md)
   - [Clients](./trees/practical_guides/client.md)
   - [Process](./trees/practical_guides/process.md)
