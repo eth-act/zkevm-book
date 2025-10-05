@@ -68,3 +68,5 @@ To address this, the concept of **"home proving"** has become a key goal. This i
 * **On-prem Power Consumption:** ≤ 10 kW, a limit designed to fit within the power capacity of a standard residential home.
 
 The ultimate goal is to make provers small and efficient enough to run on modest clusters, and eventually even on consumer-grade machines such as powerful desktops or laptops. By making home proving feasible, the network can maintain a high degree of censorship resistance and decentralization, allowing individuals, small organizations, or community groups to participate in proving and supporting a more open and resilient network.
+
+In addition to home proving, Ethereum will retain its censorship resistance through features like inclusion lists, as proposed in [EIP-7805 (FOCIL)](https://eips.ethereum.org/EIPS/eip-7805). Inclusion lists allow multiple validators to contribute transactions to block construction without the need to prove blocks. The capital expenditure and power consumption for these so-called includers may be less than those of validators today.
